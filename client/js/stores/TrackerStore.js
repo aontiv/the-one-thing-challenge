@@ -1,0 +1,54 @@
+import Dispatcher from '../Dispatcher';
+import { ReduceStore } from 'flux/utils';
+import { log } from '../utils/utilities';
+import { SET_SUBMITTED, SET_INITIAL_STARTDATE, SET_DATE } from '../actions/tracker/constants';
+
+class TrackerStore extends ReduceStore {
+    constructor() {
+        super(Dispatcher);
+    }
+
+    getInitialState() {
+        return {
+            length: 66,
+            currentDay: 0,
+            startDate: {},
+            submitted: false,
+        }
+    }
+
+    setInitialStartDate(state, date) {
+        return { ...state, startDate: date };
+    }
+
+    setDate(state, date) {
+        return { ...state, startDate: date };
+    }
+
+    setSubmitted(state, submitted) {
+        return { ...state, submitted };
+    }
+
+    reduce(state, action) {
+        let nextState;
+
+        switch(action.type) {
+            case SET_INITIAL_STARTDATE:
+                nextState = this.setInitialStartDate(state, action.payload.date);
+                log('TrackerStore', state, action, nextState);
+                return nextState;
+            case SET_DATE:
+                nextState = this.setDate(state, action.payload.date);
+                log('TrackerStore', state, action, nextState);
+                return nextState;
+            case SET_SUBMITTED:
+                nextState = this.setSubmitted(state, action.payload.submitted);
+                log('TrackerStore', state, action, nextState);
+                return nextState;
+            default:
+                return state;
+        }
+    }
+}
+
+export default new TrackerStore();
