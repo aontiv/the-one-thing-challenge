@@ -10,9 +10,8 @@ const CategoryInput = props => {
 
     return (
         <form className="category-input">
-            <div className="form-group">
+            <div className="form-group mb-1">
                 <select className="form-control" value={props.category} onChange={handleChange}>
-                    <option value="">- Category -</option>
                     {
                         props.defaultCategories.map(category => {
                             return (
@@ -29,5 +28,6 @@ const CategoryInput = props => {
 export default CategoryInput;
 
 CategoryInput.propTypes = {
+    category: PropTypes.string.isRequired,
     defaultCategories: PropTypes.array.isRequired,
 }

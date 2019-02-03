@@ -11,7 +11,7 @@ class HabitStore extends ReduceStore {
     getInitialState() {
         return {
             name: '',
-            category: '',
+            category: 'Personal Life',
         }
     }
 

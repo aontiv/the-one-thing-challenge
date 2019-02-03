@@ -14,9 +14,9 @@ module.exports = {
                 include: path.resolve(__dirname, 'js'),
             },
             {
-                test: /\.css$/,
-                loader: ['style-loader', 'css-loader'],
-                include: path.resolve(__dirname, 'css'),
+                test: /\.scss$/,
+                loader: ['style-loader', 'css-loader', 'sass-loader'],
+                include: path.resolve(__dirname, 'scss'),
             },
             {
                 loader: 'file-loader',

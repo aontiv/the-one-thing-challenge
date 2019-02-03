@@ -1,0 +1,1 @@
+export const SET_INITIAL_DAYS = 'SET_INITIAL_DAYS';

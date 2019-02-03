@@ -1,8 +1,17 @@
 import logo from '../../img/logo.png';
 import React, { Component } from 'react';
-import HabitContainer from './habit/HabitContainer.js'
+import DayContainer from './day/DayContainer.js';
+import HabitContainer from './habit/HabitContainer.js';
+import { setInitialDays } from '../actions/day/actions';
+import { setInitialStartDate } from '../actions/tracker/actions';
 
 class App extends Component {
+    componentDidMount() {
+        setInitialStartDate({ date: new Date() });
+        setInitialDays();
+        return;
+    }
+
     render() {
         return  (
             <div className="app">
@@ -12,8 +21,13 @@ class App extends Component {
                 </section>
 
                 {/* Main Section */}
-                <section className="main">
+                <section className="select">
                     <HabitContainer />
+                </section>
+
+                {/* Day Section */}
+                <section className="day">
+                    <DayContainer />
                 </section>
             </div>
         )

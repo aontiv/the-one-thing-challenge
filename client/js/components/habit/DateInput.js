@@ -28,9 +28,8 @@ const DateInput = props => {
 
     return (
         <form className="date-input">
-            <div className="form-group d-flex">
+            <div className="form-group d-flex mb-1">
                 <select className="form-control" value={isDate ? getMonth(props.startDate) : ""} onChange={handleMonthChange}>
-                    <option value="" disabled>- Month -</option>
                     {
                         arrayOfMonthsInYear().map(month => {
                             return <option key={`M_${month}`} value={month}>{month + 1}</option>
@@ -38,7 +37,6 @@ const DateInput = props => {
                     }
                 </select>
                 <select className="form-control" value={isDate ? getDate(props.startDate) : ""} onChange={handleDayChange}>
-                    <option value="" disabled>- Day -</option>
                     {
                         arrayOfDaysInMonth(props.startDate).map(day => {
                             return <option key={`D_${day}`} value={day}>{day}</option>
@@ -46,7 +44,6 @@ const DateInput = props => {
                     }
                 </select>
                 <select className="form-control" value={isDate ? getYear(props.startDate) : ""} onChange={handleYearChange}>
-                    <option value="" disabled>- Year -</option>
                     {
                         arrayOfYears().map(year => {
                             return <option key={`Y_${year}`} value={year}>{year}</option>

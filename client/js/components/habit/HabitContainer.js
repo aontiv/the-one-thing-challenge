@@ -2,7 +2,6 @@ import { Container } from 'flux/utils';
 import HabitStore from '../../stores/HabitStore';
 import React, { Component, Fragment } from 'react';
 import TrackerStore from '../../stores/TrackerStore';
-import { setInitialStartDate } from '../../actions/tracker/actions';
 
 import HabitList from './HabitList';
 
@@ -34,13 +33,9 @@ class HabitContainer extends Component {
         }
     }
 
-    componentDidMount() {
-        return setInitialStartDate({ date: new Date() });
-    }
-
     render() {
         return (
-            <div className="habit">
+            <div className="habit-container mt-5">
                 {
                     this.state.submitted
                         ? <HabitList name={this.state.name} category={this.state.category} startDate={this.state.startDate} />
@@ -49,7 +44,7 @@ class HabitContainer extends Component {
                                 <CategoryInput category={this.state.category} defaultCategories={this.state.defaultCategories} />
                                 <DateInput startDate={this.state.startDate} />
                                 <NameInput name={this.state.name} />
-                                <SubmitInput name={this.state.name} category={this.state.category} />
+                                <SubmitInput name={this.state.name} category={this.state.category} startDate={this.state.startDate} />
                             </Fragment>
                         )
                 }

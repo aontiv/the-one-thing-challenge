@@ -1,4 +1,4 @@
-import { getYear, getDate, getMonth, getDaysInMonth, isThisMonth } from 'date-fns';
+import { differenceInCalendarDays, getYear, getDate, getMonth, getDaysInMonth, isThisMonth } from 'date-fns';
 
 export const log = (store, prevState, action, nextState) => {
     console.group(store)
@@ -36,6 +36,13 @@ export const arrayOfYears = _ => {
     return years;
 }
 
+export const arrayOfDaysInTracker = days => {
+    for (let i = 0; i < 66; i++) {
+        days.push(i + 1);
+    }
+    return days;
+}
+
 export const arrayOfDaysInMonth = startDate => {
     let days = [];
     const year = getYear(startDate);
@@ -59,4 +66,9 @@ export const checkDayVsNextMonthDays = (event, startDate) => {
     const value = parseInt(event.target.value);
     const day = getDate(startDate) > getDaysInMonth(new Date(year, value)) ? 1 : getDate(new Date());
     return [ year, value, day ];
+}
+
+export const calculateCurrentDay = startDate => {
+    const difference = differenceInCalendarDays(new Date(), startDate);
+    return difference;
 }

@@ -1,11 +1,11 @@
 import React from 'react';
 import { format } from 'date-fns';
+import PropTypes from 'prop-types';
 
 const HabitList = props => {
     return (
         <div className="habit-list">
-            <span><i className="fa fa-minus-circle" aria-hidden="true"></i></span>
-            <ul className="list-group">
+            <ul className="list-group text-white">
                 <li className="list-group-item">{props.category}</li>
                 <li className="list-group-item">{format(props.startDate, 'MMMM DD, YYYY')}</li>
                 <li className="list-group-item">{props.name}</li>
@@ -15,3 +15,9 @@ const HabitList = props => {
 }
 
 export default HabitList;
+
+HabitList.propTypes = {
+    name: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    startDate: PropTypes.object.isRequired,
+}
