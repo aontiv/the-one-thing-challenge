@@ -24,7 +24,7 @@ class DayContainer extends Component {
                 {
                     this.state.submitted  && this.state.currentDay >= 0
                         ? <div>HAVE DAYS</div>
-                        : <Motivation />
+                        : <Motivation currentDay={this.state.currentDay} />
                 }
             </div>
         )

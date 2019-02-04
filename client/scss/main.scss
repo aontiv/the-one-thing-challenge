@@ -3,19 +3,3 @@
 .app {
     padding: 0.5rem;
 }
-
-.habit-list {
-    li {
-        &:nth-child(1) {
-            background: $gray-700;
-        }
-
-        &:nth-child(2) {
-            background: $gray-800;
-        }
-
-        &:nth-child(3) {
-            background: $gray-900;
-        }
-    }
-}

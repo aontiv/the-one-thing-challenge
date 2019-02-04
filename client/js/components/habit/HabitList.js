@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const HabitList = props => {
     return (
         <div className="habit-list">
-            <ul className="list-group text-white">
+            <ul className="list-group">
                 <li className="list-group-item">{props.category}</li>
                 <li className="list-group-item">{format(props.startDate, 'MMMM DD, YYYY')}</li>
                 <li className="list-group-item">{props.name}</li>
