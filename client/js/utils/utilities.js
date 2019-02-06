@@ -51,7 +51,7 @@ export const arrayOfDaysInMonth = startDate => {
 
     for (let i = 0; i < daysInMonth; i++) {
         if (isThisMonth(startDate)) {
-            if (i + 1 >= getDate(startDate)) {
+            if (i + 1 >= getDate(new Date())) {
                 days.push(i + 1);
             } 
         } else {

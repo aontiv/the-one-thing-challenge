@@ -29,6 +29,10 @@ class App extends Component {
                 <section className="day">
                     <DayContainer />
                 </section>
+
+                {/* <div className="start-over">
+                    <p className="text-center" style={{ color: 'blue' }}>start over</p>
+                </div> */}
             </div>
         )
     }

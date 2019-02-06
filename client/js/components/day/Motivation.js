@@ -23,13 +23,6 @@ const Motivation = props => {
                     )
                 }
             </div>
-            {
-                currentDay && (
-                    <div className="start-over">
-                        <p className="text-center" style={{ color: 'blue' }}>start over</p>
-                    </div>
-                )
-            }
         </div>
     )
 }

@@ -3,3 +3,60 @@
 .app {
     padding: 0.5rem;
 }
+
+.day .complete-selected {
+    color: white;
+    background: green;
+    border-color: green;
+}
+
+.day .incomplete-selected {
+    color: white;
+    background: red;
+    border-color: red;
+}
+
+.day .note-action:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.day .button-complete:hover {
+    background: green;
+    border-color: green;
+}
+
+.day .button-incomplete:hover {
+    background: red;
+    border-color: red;
+}
+
+.day .left-arrow {
+    left: 0;
+    top: 50%;
+    z-index: 1;
+    opacity: .5;
+    font-size: 2rem;
+    color: #b40101;
+    transform: translateY(-50%);
+}
+
+.day .material-icons:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.day .right-arrow {
+    right: 0;
+    top: 50%;
+    z-index: 1;
+    opacity: .5;
+    font-size: 2rem;
+    color: #b40101;
+    transform: translateY(-50%);
+}
+
+.day .material-icons:hover {
+    opacity: 1;
+    cursor: pointer;
+}
