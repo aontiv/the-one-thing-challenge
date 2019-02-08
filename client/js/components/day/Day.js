@@ -48,7 +48,7 @@ const Day = props => {
             <i className="material-icons position-absolute left-arrow" onClick={handleClickLeft}>keyboard_arrow_left</i>
             <i className="material-icons position-absolute right-arrow" onClick={handleClickRight}>keyboard_arrow_right</i>
 
-            <div className="card shadow position-relative mb-5" style={{ height: '24.588rem', width: '100%' }}>
+            <div className="card shadow position-relative" style={{ height: '24.588rem', width: '100%' }}>
                 <svg className="position-absolute rounded-top" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 30">
                     <polygon stroke="black" points="0,0 100,0 0,29" />
                 </svg>
@@ -84,5 +84,6 @@ const Day = props => {
 export default Day;
 
 Day.propTypes = {
-
+    days: PropTypes.array.isRequired,
+    day: PropTypes.object.isRequired,
 }

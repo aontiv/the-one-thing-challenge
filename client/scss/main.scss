@@ -6,8 +6,8 @@
 
 .day .complete-selected {
     color: white;
-    background: green;
-    border-color: green;
+    background: #00ff00;
+    border-color: #00ff00;
 }
 
 .day .incomplete-selected {
@@ -22,8 +22,8 @@
 }
 
 .day .button-complete:hover {
-    background: green;
-    border-color: green;
+    background: #00ff00;
+    border-color: #00ff00;
 }
 
 .day .button-incomplete:hover {
@@ -59,4 +59,38 @@
 .day .material-icons:hover {
     opacity: 1;
     cursor: pointer;
+}
+
+.overview-container {
+    .overview-day:nth-child(1) {
+        border-top-left-radius: 0.25rem;
+    }
+
+    .overview-day:nth-child(11) {
+        border-top-right-radius: 0.25rem;
+    }
+
+    .overview-day:nth-child(56) {
+        border-bottom-left-radius: 0.25rem;
+    }
+
+    .overview-day:nth-child(66) {
+        border-bottom-right-radius: 0.25rem;
+    }
+}
+
+.overview-container .overview-day {
+    width: 1.727rem;
+    height: 1.727rem;
+}
+
+.overview-container .overview-day:hover {
+    cursor: pointer;
+    opacity: 0.75;
+}
+
+.overview-container h5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

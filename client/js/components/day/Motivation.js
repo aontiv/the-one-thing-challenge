@@ -6,7 +6,7 @@ const Motivation = props => {
 
     return (
         <div className='motivation'>
-            <div className="card shadow text-center position-relative mb-5" style={{ height: '24.588rem', width: '100%' }}>
+            <div className="card shadow text-center position-relative" style={{ height: '24.588rem', width: '100%' }}>
                 <svg className="position-absolute rounded-top" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 30">
                     <polygon stroke="black" points="0,0 100,0 0,29" />
                 </svg>
