@@ -1,6 +1,7 @@
 import Dispatcher from '../Dispatcher';
 import { ReduceStore } from 'flux/utils';
 import { log } from '../utils/utilities';
+import { RESET } from '../actions/constants';
 import { SET_CURRENT_DAY, SET_SUBMITTED, SET_INITIAL_STARTDATE, SET_DATE } from '../actions/tracker/constants';
 
 class TrackerStore extends ReduceStore {
@@ -9,6 +10,15 @@ class TrackerStore extends ReduceStore {
     }
 
     getInitialState() {
+        return {
+            length: 66,
+            startDate: {},
+            currentDay: null,
+            submitted: false,
+        }
+    }
+
+    reset(state) {
         return {
             length: 66,
             startDate: {},
@@ -37,6 +47,10 @@ class TrackerStore extends ReduceStore {
         let nextState;
 
         switch(action.type) {
+            case RESET:
+                nextState = this.reset(state);
+                log('TrackerStore', state, action, nextState);
+                return nextState;
             case SET_INITIAL_STARTDATE:
                 nextState = this.setInitialStartDate(state, action.payload.date);
                 log('TrackerStore', state, action, nextState);

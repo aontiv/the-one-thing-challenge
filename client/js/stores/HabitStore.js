@@ -1,6 +1,7 @@
 import Dispatcher from '../Dispatcher';
 import { log } from '../utils/utilities';
 import { ReduceStore } from 'flux/utils';
+import { RESET } from '../actions/constants';
 import { SET_NAME, SET_CATEGORY } from '../actions/habit/constants';
 
 class HabitStore extends ReduceStore {
@@ -9,6 +10,13 @@ class HabitStore extends ReduceStore {
     }
 
     getInitialState() {
+        return {
+            name: '',
+            category: 'Personal Life',
+        }
+    }
+
+    reset(state) {
         return {
             name: '',
             category: 'Personal Life',
@@ -27,6 +35,10 @@ class HabitStore extends ReduceStore {
         let nextState;
         
         switch(action.type) {
+            case RESET:
+                nextState = this.reset(state);
+                log('HabitStore', state, action, nextState);
+                return nextState;
             case SET_NAME:
                 nextState = this.setName(state, action.payload.name);
                 log('HabitStore', state, action, nextState);

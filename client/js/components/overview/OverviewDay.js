@@ -9,13 +9,15 @@ const OverviewDay = props => {
                 ? '#00ff00'
                 : 'red'
             : 'none'
+
+    const bgColor = props.day.noteSubmitted ? '#ffdd55' : 'black';
     
     function handleClick() {
         updateSelected({ id: props.day.id });
     }
     
     return (
-        <div className="overview-day" style={{ color: 'white', backgroundColor: 'black' }} onClick={handleClick}>
+        <div className="overview-day" style={{ color: 'white', backgroundColor: bgColor }} onClick={handleClick}>
             <div className="circle rounded-circle h-100 d-flex justify-content-center align-items-center" style={{ backgroundColor: circleColor }}>
                 <h5 className="content mb-0">{props.day.day}</h5>
             </div>

@@ -11,7 +11,7 @@ const NameInput = props => {
     return (
         <form className="name-input">
             <div className="form-group mb-1">
-                <input type="text" className="form-control" value={props.name} placeholder="Read The One Thing by Gary Keller" onChange={handleChange} />
+                <input type="text" className="form-control text-center" value={props.name} placeholder="- Habit Description -" onChange={handleChange} />
             </div>
         </form>
     )

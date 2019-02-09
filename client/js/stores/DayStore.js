@@ -1,5 +1,6 @@
 import Dispatcher from '../Dispatcher';
 import { ReduceStore } from 'flux/utils';
+import { RESET } from '../actions/constants';
 import { log, arrayOfDaysInTracker } from '../utils/utilities';
 import { UPDATE_COMPLETE, UPDATE_MARKED, SET_INITIAL_DAYS, UPDATE_SELECTED, UPDATE_NOTE_SUBMITTED, UPDATE_NOTE } from '../actions/day/constants';
 
@@ -9,6 +10,10 @@ class DayStore extends ReduceStore {
     }
 
     getInitialState() {
+        return [];
+    }
+
+    reset(state) {
         return [];
     }
 
@@ -81,6 +86,10 @@ class DayStore extends ReduceStore {
         let nextState;
 
         switch(action.type) {
+            case RESET:
+                nextState = this.reset(state);
+                log('DayStore', state, action, nextState);
+                return nextState;
             case UPDATE_COMPLETE:
                 nextState = this.updateComplete(state, action.payload.id, action.payload.value);
                 log('DayStore', state, action, nextState);

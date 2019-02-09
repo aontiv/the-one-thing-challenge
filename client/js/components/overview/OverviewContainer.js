@@ -20,14 +20,12 @@ class OverviewContainer extends Component {
     render() {
         const isReady = this.state.submitted && this.state.currentDay >= 0 ? true : false;
 
-        return (
-            <div className={"overview-container d-flex flex-wrap" + (isReady ? " mt-5" : "")}>
+        return isReady && (
+            <div className="overview-container d-flex flex-wrap mb-4">
                 {
-                    isReady && (
-                        this.state.days.map(overviewDay => {
-                            return <OverviewDay key={overviewDay.id} day={overviewDay} />
-                        })
-                    )
+                    this.state.days.map(overviewDay => {
+                        return <OverviewDay key={overviewDay.id} day={overviewDay} />
+                    })
                 }
             </div>
         )

@@ -4,7 +4,6 @@ import { Container } from 'flux/utils';
 import React, { Component } from 'react';
 import DayStore from '../../stores/DayStore';
 import TrackerStore from '../../stores/TrackerStore';
-import { updateSelected } from '../../actions/day/actions';
 
 class DayContainer extends Component {
     static getStores() {
@@ -24,7 +23,7 @@ class DayContainer extends Component {
         const day = this.state.days.filter(day => day.selected)[0];
 
         return (
-            <div className="day-container mt-5">
+            <div className={"day-container" + (this.state.submitted ? ' mb-5' : '')}>
                 {
                     this.state.submitted && this.state.currentDay >= 0
                         ? <Day days={this.state.days} day={day} />
