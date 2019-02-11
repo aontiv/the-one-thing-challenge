@@ -4,7 +4,8 @@ module.exports = {
     entry: "./js/index.js",
     output: {
         filename: "bundle.js",
-        path: path.resolve('../server/template/', 'static'),
+        publicPath: '/static/',
+        path: path.resolve('../server/templates/', 'static'),
     },
     module: {
         rules: [
