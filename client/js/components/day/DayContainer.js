@@ -23,7 +23,7 @@ class DayContainer extends Component {
         const day = this.state.days.filter(day => day.selected)[0];
 
         return (
-            <div className={"day-container" + (this.state.submitted ? ' mb-5' : '')}>
+            <div className="day-container mb-4">
                 {
                     this.state.submitted && this.state.currentDay >= 0
                         ? <Day days={this.state.days} day={day} />

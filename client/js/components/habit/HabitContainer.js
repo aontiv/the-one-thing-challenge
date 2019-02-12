@@ -35,7 +35,7 @@ class HabitContainer extends Component {
 
     render() {
         return (
-            <div className="habit-container mb-5">
+            <div className="habit-container mb-4">
                 {
                     this.state.submitted
                         ? <HabitList name={this.state.name} category={this.state.category} startDate={this.state.startDate} />

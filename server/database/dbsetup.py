@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String, DateTime, Boolean, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
+from marshmallow_sqlalchemy import ModelSchema
 
 Base = declarative_base()
 
@@ -10,6 +11,7 @@ class User(Base):
     id = Column(Integer, primary_key=True)
     username = Column(String)
     password = Column(String)
+    loggedIn = Column(Boolean)
 
     trackers = relationship('Tracker', back_populates='user')
     habits = relationship('Habit', back_populates='user')
@@ -51,3 +53,25 @@ class Day(Base):
     user_id = Column(Integer, ForeignKey('users.id'))
 
     user = relationship('User', back_populates='days')
+
+# Marshmallow Schemas
+class UserSchema(ModelSchema):
+    class Meta:
+        model = User
+
+class TrackerSchema(ModelSchema):
+    class Meta:
+        model = Tracker
+
+class HabitSchema(ModelSchema):
+    class Meta:
+        model = Habit
+
+class DaySchema(ModelSchema):
+    class Meta:
+        model = Day
+
+user_schema = UserSchema()
+tracker_schema = TrackerSchema()
+habit_schema = HabitSchema()
+day_schema = DaySchema()

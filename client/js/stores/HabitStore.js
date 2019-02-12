@@ -16,7 +16,7 @@ class HabitStore extends ReduceStore {
         }
     }
 
-    reset(state) {
+    reset() {
         return {
             name: '',
             category: 'Personal Life',
@@ -36,7 +36,7 @@ class HabitStore extends ReduceStore {
         
         switch(action.type) {
             case RESET:
-                nextState = this.reset(state);
+                nextState = this.reset();
                 log('HabitStore', state, action, nextState);
                 return nextState;
             case SET_NAME:

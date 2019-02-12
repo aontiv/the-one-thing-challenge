@@ -1,6 +1,7 @@
 @import "~bootstrap/scss/bootstrap";
 
 .app {
+    height: 100vh;
     padding: 0.5rem;
 }
 
@@ -142,3 +143,33 @@
         text-decoration: underline;
     }
 }
+
+/* ---------- ---------- --------- ---------- */
+
+.login-container {
+    height: 100%;
+  }
+  
+  .login-form {
+    width: 19rem;
+    height: 24.588rem;
+    background: white;
+  }
+
+  .login-form__button {
+      background: black;
+      transition: opacity 500ms;
+  }
+
+  .login-form__button:hover {
+      opacity: 0.85;
+  }
+  
+  .login-form__links {
+    color: blue;
+  }
+  
+  .login-form__register:hover, .login-form__login:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
