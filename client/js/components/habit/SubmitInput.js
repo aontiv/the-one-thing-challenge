@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { setDatabaseTables } from '../../actions/actions';
+import { setInitialDays } from '../../actions/day/actions';
 import { calculateCurrentDay } from '../../utils/utilities';
 import { setSubmitted } from '../../actions/tracker/actions';
 import { setCurrentDay } from '../../actions/tracker/actions';
@@ -12,6 +14,9 @@ const SubmitInput = props => {
         if (name !== "" && category !== "") {
             setSubmitted({ submitted: true });
             setCurrentDay({ currentDay });
+            setInitialDays();
+
+            setDatabaseTables();
             return;
         }
     }

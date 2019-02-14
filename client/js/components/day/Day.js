@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { updateSelected, updateComplete, updateMarked, updateNote, updateNoteSubmitted } from '../../actions/day/actions';
+import { updateSelected, updateComplete, updateMarked, updateNote, updateNoteSubmitted, async_updateDays } from '../../actions/day/actions';
 
 const Day = props => {
     const handleClickLeft = id => {
@@ -21,7 +21,8 @@ const Day = props => {
 
     const handleClickSubmit = id => {
         if (props.day.note) {
-            return updateNoteSubmitted({ id, value: true });
+            updateNoteSubmitted({ id, value: true });
+            async_updateDays();
         }
     }
 
@@ -34,6 +35,7 @@ const Day = props => {
 
         updateMarked({ id, value: true });
         updateComplete({ id, value });
+        async_updateDays();
     }
 
     const handleChange = (event, id) => {

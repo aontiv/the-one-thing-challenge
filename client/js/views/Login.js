@@ -1,6 +1,6 @@
 import logo from '../../img/logo.png';
 import React, { Component } from 'react';
-import { register } from '../actions/user/actions'
+import { async_addUser, async_login } from '../actions/user/actions'
 
 class Login extends Component {
     constructor() {
@@ -27,7 +27,9 @@ class Login extends Component {
         
         const { username, password, type } = this.state;
         if (type === 'Register') {
-            register({ username, password });
+            async_addUser({ username, password, loggedIn: true });
+        } else if (type === 'Login') {
+            async_login({ username, password });
         }
     }
 

@@ -1,8 +1,8 @@
 import { Container } from 'flux/utils';
 import React, { Component } from 'react';
-import { reset } from '../../actions/actions';
 import TrackerStore from '../../stores/TrackerStore';
 import { setInitialDays } from '../../actions/day/actions';
+import { reset, updateDatabaseTables } from '../../actions/actions';
 import { setInitialStartDate } from '../../actions/tracker/actions';
 
 class StartOverContainer extends Component {
@@ -20,6 +20,8 @@ class StartOverContainer extends Component {
         reset();
         setInitialStartDate({ date: new Date() });
         setInitialDays();
+
+        updateDatabaseTables();
     }
 
     render() {
