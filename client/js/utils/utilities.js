@@ -70,5 +70,5 @@ export const checkDayVsNextMonthDays = (event, startDate) => {
 
 export const calculateCurrentDay = startDate => {
     const difference = differenceInCalendarDays(new Date(), startDate);
-    return difference;
+    return difference <= 65 ? difference : 65;
 }

@@ -173,3 +173,16 @@
     cursor: pointer;
     text-decoration: underline;
   }
+
+  /* ---------- ---------- --------- ---------- */
+
+  .logout__span {
+      color: gray;
+      font-size: 0.85rem;
+      letter-spacing: 0.05rem;
+  }
+
+  .logout__span:hover {
+      cursor: pointer;
+      text-decoration: underline;
+  }

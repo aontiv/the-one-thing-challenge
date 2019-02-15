@@ -3,6 +3,7 @@ import { ReduceStore } from 'flux/utils';
 import { log } from '../utils/utilities';
 import { RESET } from '../actions/constants';
 import { LOAD_STATE } from '../actions/constants';
+import { calculateCurrentDay } from '../utils/utilities';
 import { SET_CURRENT_DAY, SET_SUBMITTED, SET_INITIAL_STARTDATE, SET_DATE } from '../actions/tracker/constants';
 
 class TrackerStore extends ReduceStore {
@@ -20,7 +21,8 @@ class TrackerStore extends ReduceStore {
     }
 
     loadState(state, tracker) {
-        return { ...state, ...tracker };
+        const currentDay = calculateCurrentDay(tracker.startDate);
+        return { ...state, ...tracker, currentDay };
     }
 
     reset(state) {

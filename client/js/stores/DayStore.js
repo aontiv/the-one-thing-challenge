@@ -1,5 +1,6 @@
 import Dispatcher from '../Dispatcher';
 import { ReduceStore } from 'flux/utils';
+import TrackerStore from './TrackerStore';
 import { RESET } from '../actions/constants';
 import { LOAD_STATE } from '../actions/constants';
 import { log, arrayOfDaysInTracker } from '../utils/utilities';
@@ -37,7 +38,7 @@ class DayStore extends ReduceStore {
             id: `D_${day}`,
             completed: false,
             noteSubmitted: false,
-            selected: index === 0 ? true : false,
+            selected: TrackerStore.getState().currentDay === index ? true : false,
         }
     }
 

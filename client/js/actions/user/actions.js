@@ -1,6 +1,8 @@
 import { ADD_USER } from './constants';
 import { LOAD_STATE } from '../constants';
 import Dispatcher from '../../Dispatcher';
+import { updateSelected } from '../day/actions';
+import TrackerStore from '../../stores/TrackerStore';
 import { setInitialStartDate } from '../tracker/actions';
 
 export const async_addUser = payload => {
@@ -17,8 +19,12 @@ export const async_login = payload => {
         .then(resp => resp.json())
         .then(data => {
             Dispatcher.dispatch({ type: ADD_USER, payload: { user: data.user } })
+            setInitialStartDate({ date: new Date() });
 
-            data.tracker.startDate = new Date(data.tracker.startDate);
-            Dispatcher.dispatch({ type: LOAD_STATE, payload: data })
+            if (data.tracker.startDate) {
+                data.tracker.startDate = new Date(data.tracker.startDate);
+                Dispatcher.dispatch({ type: LOAD_STATE, payload: data });
+                updateSelected({ id: `D_${TrackerStore.getState().currentDay + 1}` });
+            }
         })
 }

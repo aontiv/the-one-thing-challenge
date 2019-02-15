@@ -86,6 +86,6 @@ const Day = props => {
 export default Day;
 
 Day.propTypes = {
+    day: PropTypes.object,
     days: PropTypes.array.isRequired,
-    day: PropTypes.object.isRequired,
 }

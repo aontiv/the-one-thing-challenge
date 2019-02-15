@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 const Motivation = props => {
-    const currentDay = props.currentDay ? Math.abs(props.currentDay) : props.currentDay;
+    const currentDay = Math.abs(props.currentDay);
 
     return (
         <div className='motivation'>
@@ -15,12 +15,14 @@ const Motivation = props => {
                     <h5 className="card-text" style={{ color: '#b40101' }}>- Gary Keller</h5>
                 </div>
                 {
-                    currentDay && (
-                        <div className="d-flex flex-column justify-content-center align-items-center mb-4" style={{ backgroundColor: 'unset' }}>
-                            <h2 style={{ color: 'blue' }}>{ currentDay }</h2>
-                            <h5>{(currentDay === 1 ? 'day' : 'days') + ' until start day!'}</h5>
-                        </div>
-                    )
+                    currentDay
+                        ? (
+                            <div className="d-flex flex-column justify-content-center align-items-center mb-4" style={{ backgroundColor: 'unset' }}>
+                                <h2 style={{ color: 'blue' }}>{ currentDay }</h2>
+                                <h5>{(currentDay === 1 ? 'day' : 'days') + ' until start day!'}</h5>
+                            </div>
+                        )
+                        : <Fragment></Fragment>
                 }
             </div>
         </div>

@@ -17,8 +17,12 @@ class UserStore extends ReduceStore {
         }
     }
 
+    logout(state) {
+        return { ...state, loggedIn: false };
+    }
+
     addUser(state, user) {
-        return { ...state, ...user };
+        return { ...state, ...user, loggedIn: true };
     }
 
     reduce(state, action) {

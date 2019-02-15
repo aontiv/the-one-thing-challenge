@@ -15,6 +15,11 @@ class Main extends Component {
                     <img src={logo} alt="logo" width="100%" />
                 </section>
 
+                {/* Logout */}
+                <section className="logout mb-4 text-center">
+                    <span className="logout__span">logout</span>
+                </section>
+
                 {/* Main Section */}
                 <section className="select">
                     <HabitContainer />
