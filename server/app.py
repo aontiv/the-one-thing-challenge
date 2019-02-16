@@ -51,7 +51,7 @@ def add_user():
         return json.jsonify({ 'message': "New User: ADDED", 'user': dict(id = user.id, username = user.username, loggedIn = user.loggedIn) })
     else:
         session.close()
-        return make_response(json.dumps({ 'message': 'Username: EXISTS' }), 400, { 'Content-Type': 'application/json' })
+        return make_response(json.dumps({ 'status': 400, 'message': 'Username: EXISTS' }), 400, { 'Content-Type': 'application/json' })
 
 @app.route('/delete_users', methods=['DELETE'])
 def delete_users():

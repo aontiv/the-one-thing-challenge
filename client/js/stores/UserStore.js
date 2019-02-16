@@ -2,7 +2,7 @@ import React from 'react';
 import Dispatcher from '../Dispatcher';
 import { ReduceStore } from 'flux/utils';
 import { log } from '../utils/utilities';
-import { ADD_USER } from '../actions/user/constants';
+import { ADD_USER, LOGOUT } from '../actions/user/constants';
 
 class UserStore extends ReduceStore {
     constructor() {
@@ -29,6 +29,10 @@ class UserStore extends ReduceStore {
         let nextState;
 
         switch(action.type) {
+            case LOGOUT:
+                nextState = this.logout(state);
+                log('UserStore', state, action, nextState)
+                return nextState;
             case ADD_USER:
                 nextState = this.addUser(state, action.payload.user);
                 log('UserStore', state, action, nextState);

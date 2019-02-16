@@ -1,5 +1,6 @@
 import logo from '../../img/logo.png';
 import React, { Component } from 'react';
+import { logout } from '../actions/user/actions';
 import DayContainer from '../components/day/DayContainer.js';
 import HabitContainer from '../components/habit/HabitContainer.js';
 import OverviewContainer from '../components/overview/OverviewContainer.js';
@@ -10,38 +11,42 @@ class Main extends Component {
     render() {
         return  (
             <div className="main">
-                {/* Log Section */}
-                <section className="logo mb-5">
-                    <img src={logo} alt="logo" width="100%" />
-                </section>
+                <div className="left">
+                    {/* Log Section */}
+                    <section className="logo mb-5">
+                        <img src={logo} alt="logo" width="100%" />
+                    </section>
 
-                {/* Logout */}
-                <section className="logout mb-4 text-center">
-                    <span className="logout__span">logout</span>
-                </section>
+                    {/* Logout */}
+                    <section className="logout mb-4 text-center">
+                        <span className="logout__span" onClick={logout}>logout</span>
+                    </section>
 
-                {/* Main Section */}
-                <section className="select">
-                    <HabitContainer />
-                </section>
+                    {/* Main Section */}
+                    <section className="select">
+                        <HabitContainer />
+                    </section>
+                </div>
 
-                <section className="current-day">
-                    <CurrentDayContainer />
-                </section>
+                <div className="right">
+                    <section className="current-day">
+                        <CurrentDayContainer />
+                    </section>
 
-                {/* Day Section */}
-                <section className="day">
-                    <DayContainer />
-                </section>
+                    {/* Day Section */}
+                    <section className="day">
+                        <DayContainer />
+                    </section>
 
-                {/* Overview Section */}
-                <section className="overview">
-                    <OverviewContainer />
-                </section>
+                    {/* Overview Section */}
+                    <section className="overview">
+                        <OverviewContainer />
+                    </section>
 
-                {/* Start Over Section */}
-                <div className="start-over">
-                    <StartOverContainer />
+                    {/* Start Over Section */}
+                    <div className="start-over">
+                        <StartOverContainer />
+                    </div>
                 </div>
             </div>
         )

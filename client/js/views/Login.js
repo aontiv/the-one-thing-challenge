@@ -9,7 +9,14 @@ class Login extends Component {
             username: '',
             password: '',
             type: 'Login',
+            usernameErr: false,
+            passwordErr: false,
         }
+    }
+
+    testInput(input) {
+        var pass = /^(?:[\d\w]|\-|\_)+$/.test(input);
+        return pass;
     }
 
     handleInput(type, text) {
@@ -27,9 +34,25 @@ class Login extends Component {
         
         const { username, password, type } = this.state;
         if (type === 'Register') {
-            async_addUser({ username, password, loggedIn: true });
+            if (this.testInput(username)) {
+                if (this.testInput(password)) {
+                    async_addUser({ username, password, loggedIn: true });
+                } else {
+                    this.setState({ password: "", passwordErr: true });
+                }
+            } else {
+                this.setState({ username: "", usernameErr: true });
+            }
         } else if (type === 'Login') {
-            async_login({ username, password });
+            if (this.testInput(username)) {
+                if (this.testInput(password)) {
+                    async_login({ username, password });
+                } else {
+                    this.setState({ password: "", passwordErr: true });
+                }
+            } else {
+                this.setState({ username: "", usernameErr: true });
+            }
         }
     }
 
@@ -42,7 +65,17 @@ class Login extends Component {
                     </section>
                     <div className="login-form__inputs form-group w-100 px-3 mb-0">
                         <input className="form-control text-center mb-1" type="text" placeholder="username" value={this.state.username} onChange={event => this.handleInput('username', event.target.value)} />
+                        {
+                            this.state.usernameErr && (
+                                <p className="username__error">* only letters, numbers, dashes, and underscores</p>
+                            )
+                        }
                         <input className="form-control text-center" type="text" placeholder="password" value={this.state.password} onChange={event => this.handleInput('password', event.target.value)} />
+                        {
+                            this.state.passwordErr && (
+                                <p className="username__error">* only letters, numbers, dashes, and underscores</p>
+                            )
+                        }
                     </div>
                     <div className="w-100 px-3 mb-3">
                         <button className="login-form__button btn btn-block text-white" onClick={this.handleButtonClick.bind(this)}>{this.state.type}</button>
