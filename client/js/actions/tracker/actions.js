@@ -1,5 +1,10 @@
 import Dispatcher from '../../Dispatcher';
-import { SET_CURRENT_DAY, SET_INITIAL_STARTDATE, SET_DATE, SET_SUBMITTED } from './constants';
+import {
+    SET_DATE,
+    SET_SUBMITTED,
+    SET_CURRENT_DAY,
+    SET_INITIAL_STARTDATE
+} from './constants';
 
 export const setInitialStartDate = payload => {
     return Dispatcher.dispatch({ type: SET_INITIAL_STARTDATE, payload });

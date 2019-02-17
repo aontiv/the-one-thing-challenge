@@ -11,7 +11,13 @@ const NameInput = props => {
     return (
         <form className="name-input">
             <div className="form-group mb-1">
-                <input type="text" className="form-control text-center" value={props.name} placeholder="habit description" onChange={handleChange} />
+                <input
+                    type="text"
+                    value={props.name}
+                    onChange={handleChange}
+                    placeholder="habit description"
+                    className="form-control text-center"
+                />
             </div>
         </form>
     )

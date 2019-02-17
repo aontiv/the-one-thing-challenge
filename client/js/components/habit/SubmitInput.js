@@ -23,7 +23,14 @@ const SubmitInput = props => {
 
     return (
         <div className="submit-input">
-            <button type="button" className="btn btn-secondary btn-lg btn-block" style={{ backgroundColor: '#b40101', borderColor: '#b40101' }} onClick={handleClick}>Start Tracking!</button>
+            <button
+                type="button"
+                onClick={handleClick}
+                className="btn btn-secondary btn-lg btn-block"
+                style={{ backgroundColor: '#b40101', borderColor: '#b40101' }}
+            >
+            Start Tracking!
+            </button>
         </div>
     )
 }

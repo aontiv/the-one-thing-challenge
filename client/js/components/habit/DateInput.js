@@ -2,7 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { getDate, getMonth, getYear } from 'date-fns';
 import { setDate } from '../../actions/tracker/actions';
-import { arrayOfYears, arrayOfDaysInMonth, arrayOfMonthsInYear, checkDayVsNextMonthDays } from '../../utils/utilities';
+import {
+    arrayOfYears,
+    arrayOfDaysInMonth,
+    arrayOfMonthsInYear,
+    checkDayVsNextMonthDays
+} from '../../utils/utilities';
 
 const DateInput = props => {
     const isDate = props.startDate instanceof Date;
@@ -29,21 +34,33 @@ const DateInput = props => {
     return (
         <form className="date-input">
             <div className="form-group d-flex mb-1">
-                <select className="form-control" value={isDate ? getMonth(props.startDate) : ""} onChange={handleMonthChange}>
+                <select
+                    className="form-control"
+                    onChange={handleMonthChange}
+                    value={isDate ? getMonth(props.startDate) : ""}
+                >
                     {
                         arrayOfMonthsInYear().map(month => {
                             return <option key={`M_${month}`} value={month}>{month + 1}</option>
                         })
                     }
                 </select>
-                <select className="form-control" value={isDate ? getDate(props.startDate) : ""} onChange={handleDayChange}>
+                <select
+                    className="form-control"
+                    onChange={handleDayChange}
+                    value={isDate ? getDate(props.startDate) : ""}
+                >
                     {
                         arrayOfDaysInMonth(props.startDate).map(day => {
                             return <option key={`D_${day}`} value={day}>{day}</option>
                         })
                     }
                 </select>
-                <select className="form-control" value={isDate ? getYear(props.startDate) : ""} onChange={handleYearChange}>
+                <select
+                    className="form-control"
+                    onChange={handleYearChange}
+                    value={isDate ? getYear(props.startDate) : ""}
+                >
                     {
                         arrayOfYears().map(year => {
                             return <option key={`Y_${year}`} value={year}>{year}</option>

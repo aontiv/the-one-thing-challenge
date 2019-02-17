@@ -1,6 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { updateSelected, updateComplete, updateMarked, updateNote, updateNoteSubmitted, async_updateDays } from '../../actions/day/actions';
+import {
+    updateNote,
+    updateMarked,
+    updateSelected,
+    updateComplete,
+    async_updateDays,
+    updateNoteSubmitted
+} from '../../actions/day/actions';
 
 const Day = props => {
     const handleClickLeft = id => {
@@ -44,7 +51,7 @@ const Day = props => {
 
     const isComplete = props.day.marked && props.day.completed ? true : false;
     const isIncomplete = props.day.marked && !props.day.completed ? true : false;
-    
+
     return (
         <div className="day position-relative">
             <i className="material-icons position-absolute left-arrow" onClick={handleClickLeft}>keyboard_arrow_left</i>
@@ -62,21 +69,59 @@ const Day = props => {
                         props.day.noteSubmitted
                             ? (
                                 <div className="note d-flex flex-column align-items-center w-100">
-                                    <p className="w-100 border-0 text-center p-1 mb-1 text-dark" style={{ fontSize: '1.25rem' }}>{props.day.note}</p>
-                                    <span className="note-action" style={{ color: 'blue', fontSize: '1rem', letterSpacing: '0.05rem' }} onClick={_ => handleClickEdit(props.day.id)}>edit</span>
+                                    <p
+                                        style={{ fontSize: '1.25rem' }}
+                                        className="w-100 border-0 text-center p-1 mb-1 text-dark"
+                                    >
+                                    {props.day.note}
+                                    </p>
+                                    <span
+                                        className="note-action"
+                                        onClick={_ => handleClickEdit(props.day.id)}
+                                        style={{ color: 'blue', fontSize: '1rem', letterSpacing: '0.05rem' }}
+                                    >
+                                    edit
+                                    </span>
                                 </div>
                             )
                             : (
                                 <div className="note d-flex flex-column align-items-center w-100">
-                                    <input className="w-100 border-0 text-center p-1 mb-1 text-dark" type="text" placeholder="- add a note -" style={{ fontSize: '1.25rem' }} value={props.day.note} onChange={event => handleChange(event, props.day.id)} />
-                                    <span className="note-action" style={{ color: 'blue', fontSize: '1rem', letterSpacing: '0.05rem' }} onClick={_ => handleClickSubmit(props.day.id)}>submit</span>
+                                    <input
+                                        type="text"
+                                        value={props.day.note}
+                                        placeholder="- add a note -"
+                                        style={{ fontSize: '1.25rem' }}
+                                        onChange={event => handleChange(event, props.day.id)}
+                                        className="w-100 border-0 text-center p-1 mb-1 text-dark"
+                                    />
+                                    <span
+                                        className="note-action"
+                                        onClick={_ => handleClickSubmit(props.day.id)}
+                                        style={{ color: 'blue', fontSize: '1rem', letterSpacing: '0.05rem' }}
+                                    >
+                                    submit
+                                    </span>
                                 </div>
                             )
                     }
                 </div>
                 <div className="buttons d-flex flex-column w-100 p-3">
-                    <button className={"button-complete btn btn-block btn-outline-dark" + (isComplete ? ' complete-selected' : '')} type="button" style={{ fontSize: '1.25rem' }} onClick={_ => handleClickChoice(props.day.id, 'complete')}>Complete</button>
-                    <button className={"button-incomplete btn btn-block btn-outline-dark" + (isIncomplete ? ' incomplete-selected' : '')} type="button" style={{ fontSize: '1.25rem' }} onClick={_ => handleClickChoice(props.day.id, 'incomplete')}>Incomplete</button>
+                    <button
+                        type="button"
+                        style={{ fontSize: '1.25rem' }}
+                        onClick={_ => handleClickChoice(props.day.id, 'complete')}
+                        className={"button-complete btn btn-block btn-outline-dark" + (isComplete ? ' complete-selected' : '')}
+                    >
+                    Complete
+                    </button>
+                    <button
+                        type="button"
+                        style={{ fontSize: '1.25rem' }}
+                        onClick={_ => handleClickChoice(props.day.id, 'incomplete')}
+                        className={"button-incomplete btn btn-block btn-outline-dark" + (isIncomplete ? ' incomplete-selected' : '')}
+                    >
+                    Incomplete
+                    </button>
                 </div>
             </div>
         </div>

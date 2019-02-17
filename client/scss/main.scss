@@ -4,6 +4,11 @@
     padding: 0.5rem;
 }
 
+.main {
+    margin: 0 auto;
+    max-width: 19rem;
+}
+
 .day {
     .complete-selected {
         color: white;
@@ -146,10 +151,9 @@
 /* ---------- ---------- --------- ---------- */
 
 .login-container {
-    height: 100%;
-    margin-top: 10rem;
+    height: 100vh;
   }
-  
+
   .login-form {
     width: 19rem;
     height: 24.588rem;
@@ -164,11 +168,11 @@
   .login-form__button:hover {
       opacity: 0.85;
   }
-  
+
   .login-form__links {
     color: blue;
   }
-  
+
   .login-form__register:hover, .login-form__login:hover {
     cursor: pointer;
     text-decoration: underline;
@@ -207,10 +211,4 @@
       margin: 0 auto;
       max-width: 19rem;
       max-height: 27.588rem;
-  }
-
-  @media screen and (min-width: 650px) {
-      .main {
-          display: flex;
-      }
   }

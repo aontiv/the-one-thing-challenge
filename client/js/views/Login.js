@@ -31,7 +31,7 @@ class Login extends Component {
 
     handleButtonClick(event) {
         event.preventDefault();
-        
+
         const { username, password, type } = this.state;
         if (type === 'Register') {
             if (this.testInput(username)) {
@@ -64,13 +64,25 @@ class Login extends Component {
                         <img src={logo} alt="logo" width="85%" />
                     </section>
                     <div className="login-form__inputs form-group w-100 px-3 mb-0">
-                        <input className="form-control text-center mb-1" type="text" placeholder="username" value={this.state.username} onChange={event => this.handleInput('username', event.target.value)} />
+                        <input
+                            type="text"
+                            placeholder="username"
+                            value={this.state.username}
+                            className="form-control text-center mb-1"
+                            onChange={event => this.handleInput('username', event.target.value)}
+                        />
                         {
                             this.state.usernameErr && (
                                 <p className="username__error">* only letters, numbers, dashes, and underscores</p>
                             )
                         }
-                        <input className="form-control text-center" type="text" placeholder="password" value={this.state.password} onChange={event => this.handleInput('password', event.target.value)} />
+                        <input
+                            type="text"
+                            placeholder="password"
+                            value={this.state.password}
+                            className="form-control text-center"
+                            onChange={event => this.handleInput('password', event.target.value)}
+                        />
                         {
                             this.state.passwordErr && (
                                 <p className="username__error">* only letters, numbers, dashes, and underscores</p>
@@ -84,7 +96,7 @@ class Login extends Component {
                         <span className="login-form__register" onClick={() => this.handleTypeClick('Register')}>Register</span> /
                         <span className="login-form__login" onClick={() => this.handleTypeClick('Login')}> Login</span>
                     </div>
-                </form>  
+                </form>
             </section>
         )
     }

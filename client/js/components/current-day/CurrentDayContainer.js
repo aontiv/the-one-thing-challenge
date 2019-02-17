@@ -22,7 +22,12 @@ class CurrentDayContainer extends Component {
     render() {
         return this.state.submitted && this.state.currentDay >= 0 && (
                     <div className="current-day-container d-flex justify-content-center mb-2">
-                        <h6 className="current-day-content" onClick={this.handleClick.bind(this)}>Day: <span style={{ color: 'blue' }}>{this.state.currentDay + 1}</span></h6>
+                        <h6
+                            className="current-day-content"
+                            onClick={this.handleClick.bind(this)}
+                        >
+                        Day: <span style={{ color: 'blue' }}>{this.state.currentDay + 1}</span>
+                        </h6>
                     </div>
                 )
     }

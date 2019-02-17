@@ -1,7 +1,6 @@
 import React from 'react';
 import Dispatcher from '../Dispatcher';
 import { ReduceStore } from 'flux/utils';
-import { log } from '../utils/utilities';
 import { ADD_USER, LOGOUT } from '../actions/user/constants';
 
 class UserStore extends ReduceStore {
@@ -31,11 +30,9 @@ class UserStore extends ReduceStore {
         switch(action.type) {
             case LOGOUT:
                 nextState = this.logout(state);
-                log('UserStore', state, action, nextState)
                 return nextState;
             case ADD_USER:
                 nextState = this.addUser(state, action.payload.user);
-                log('UserStore', state, action, nextState);
                 return nextState;
             default:
                 return state;

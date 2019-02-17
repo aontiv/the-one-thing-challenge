@@ -17,7 +17,10 @@ const Motivation = props => {
                 {
                     currentDay
                         ? (
-                            <div className="d-flex flex-column justify-content-center align-items-center mb-4" style={{ backgroundColor: 'unset' }}>
+                            <div
+                                style={{ backgroundColor: 'unset' }}
+                                className="d-flex flex-column justify-content-center align-items-center mb-4"
+                            >
                                 <h2 style={{ color: 'blue' }}>{ currentDay }</h2>
                                 <h5>{(currentDay === 1 ? 'day' : 'days') + ' until start day!'}</h5>
                             </div>

@@ -1,5 +1,15 @@
-import { differenceInCalendarDays, getYear, getDate, getMonth, getDaysInMonth, isThisMonth } from 'date-fns';
+import {
+    getYear,
+    getDate,
+    getMonth,
+    isThisMonth,
+    getDaysInMonth,
+    differenceInCalendarDays
+} from 'date-fns';
 
+// Utility to log the effects of dispatched actions.
+// I used it during development in stores switch statements
+// after the nextState was calculated for each case.
 export const log = (store, prevState, action, nextState) => {
     console.group(store)
         console.group('Prev. State');
@@ -53,11 +63,11 @@ export const arrayOfDaysInMonth = startDate => {
         if (isThisMonth(startDate)) {
             if (i + 1 >= getDate(new Date())) {
                 days.push(i + 1);
-            } 
+            }
         } else {
             days.push(i + 1);
         }
-    } 
+    }
     return days;
 }
 

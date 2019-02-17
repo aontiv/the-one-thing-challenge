@@ -28,13 +28,15 @@ def login():
     data = request.get_json()
     user = session.query(User).filter_by(username = data['username'], password = data['password']).first()
     if user == None:
-        return make_response(json.dumps({ 'message': 'ERROR: USER DOES NOT EXIST'}), 400, { 'Content-Type': 'application/json' })
+        session.close()
+        return json.jsonify({ 'status': 400, 'message': 'ERROR: USER DOES NOT EXIST'})
     else:
         current_user = user_schema.dump(user).data
         tracker = tracker_schema.dump(session.query(Tracker).filter_by(user_id = user.id).first()).data
         habit = habit_schema.dump(session.query(Habit).filter_by(user_id = user.id).first()).data
         days = days_schema.dump(session.query(Days).filter_by(user_id = user.id).first()).data
-        return json.jsonify({ 'user': { 'id': current_user['id'], 'username': current_user['username'], 'loggedIn': current_user['loggedIn'] }, 'tracker': tracker, 'habit': habit, 'days': days })
+        session.close()
+        return json.jsonify({ 'status': 200, 'user': { 'id': current_user['id'], 'username': current_user['username'], 'loggedIn': current_user['loggedIn'] }, 'tracker': tracker, 'habit': habit, 'days': days })
 
 # Users
 @app.route('/add_user', methods=['POST'])
@@ -86,6 +88,14 @@ def update_tracker():
     session.close()
     return json.jsonify({ 'message': 'Tracker: UPDATED', 'tracker': tracker })
 
+@app.route('/delete_tracker/<id>', methods=['DELETE'])
+def delete_tracker(id):
+    session = Session()
+    session.query(Tracker).filter_by(user_id = id).delete()
+    session.commit()
+    session.close()
+    return json.jsonify({ 'status': 200, 'message': 'Tracker: DELETED'})
+
 @app.route('/delete_trackers', methods=['DELETE'])
 def delete_trackers():
     session = Session()
@@ -119,6 +129,14 @@ def update_habit():
     habit = habit_schema.dump(session.query(Habit).filter_by(user_id = data['id']).first()).data
     session.close()
     return json.jsonify({ 'message': 'Habit: UPDATED', 'habit': habit })
+
+@app.route('/delete_habit/<id>', methods=['DELETE'])
+def delete_habit(id):
+    session = Session()
+    session.query(Habit).filter_by(user_id = id).delete()
+    session.commit()
+    session.close()
+    return json.jsonify({ 'status': 200, 'message': 'Habit: DELETED'})
 
 @app.route('/delete_habits', methods=['DELETE'])
 def delete_habits():
@@ -154,6 +172,14 @@ def update_days():
     session.close()
     return json.jsonify({ 'message': 'Days: UPDATED', 'days': days })
 
+@app.route('/delete_days_row/<id>', methods=['DELETE'])
+def delete_days_row(id):
+    session = Session()
+    session.query(Days).filter_by(user_id = id).delete()
+    session.commit()
+    session.close()
+    return json.jsonify({ 'status': 200, 'message': 'Days Row: DELETED' })
+
 @app.route('/delete_days', methods=['DELETE'])
 def delete_days():
     session = Session()
@@ -161,5 +187,4 @@ def delete_days():
     session.commit()
     days = session.query(Days).all()
     session.close()
-    return json.jsonify({ 'message': 'Days DELETED', 'days': days })
-
+    return json.jsonify({ 'message': 'All Days DELETED', 'days': days })

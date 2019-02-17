@@ -3,8 +3,15 @@ import { ReduceStore } from 'flux/utils';
 import TrackerStore from './TrackerStore';
 import { RESET } from '../actions/constants';
 import { LOAD_STATE } from '../actions/constants';
-import { log, arrayOfDaysInTracker } from '../utils/utilities';
-import { UPDATE_COMPLETE, UPDATE_MARKED, SET_INITIAL_DAYS, UPDATE_SELECTED, UPDATE_NOTE_SUBMITTED, UPDATE_NOTE } from '../actions/day/constants';
+import { arrayOfDaysInTracker } from '../utils/utilities';
+import {
+    UPDATE_NOTE,
+    UPDATE_MARKED,
+    UPDATE_COMPLETE,
+    UPDATE_SELECTED,
+    SET_INITIAL_DAYS,
+    UPDATE_NOTE_SUBMITTED
+} from '../actions/day/constants';
 
 class DayStore extends ReduceStore {
     constructor() {
@@ -95,35 +102,27 @@ class DayStore extends ReduceStore {
         switch(action.type) {
             case LOAD_STATE:
                 nextState = this.loadState(state, action.payload.days);
-                log('DayStore', state, action, nextState);
                 return nextState;
             case RESET:
                 nextState = this.reset(state);
-                log('DayStore', state, action, nextState);
                 return nextState;
             case UPDATE_COMPLETE:
                 nextState = this.updateComplete(state, action.payload.id, action.payload.value);
-                log('DayStore', state, action, nextState);
                 return nextState;
             case UPDATE_MARKED:
                 nextState = this.updateMarked(state, action.payload.id, action.payload.value);
-                log('DayStore', state, action, nextState);
                 return nextState;
             case UPDATE_NOTE:
                 nextState = this.updateNote(state, action.payload.id, action.payload.note);
-                log('DayStore', state, action, nextState);
                 return nextState;
             case UPDATE_NOTE_SUBMITTED:
                 nextState = this.updateNoteSubmitted(state, action.payload.id, action.payload.value);
-                log('DayStore', state, action, nextState);
                 return nextState;
             case SET_INITIAL_DAYS:
                 nextState = this.setInitialDays(state);
-                log('DayStore', state, action, nextState);
                 return nextState;
             case UPDATE_SELECTED:
                 nextState = this.updateSelected(state, action.payload.id);
-                log('DayStore', state, action, nextState);
                 return nextState;
             default:
                 return state;

@@ -1,10 +1,14 @@
 import Dispatcher from '../Dispatcher';
 import { ReduceStore } from 'flux/utils';
-import { log } from '../utils/utilities';
 import { RESET } from '../actions/constants';
 import { LOAD_STATE } from '../actions/constants';
 import { calculateCurrentDay } from '../utils/utilities';
-import { SET_CURRENT_DAY, SET_SUBMITTED, SET_INITIAL_STARTDATE, SET_DATE } from '../actions/tracker/constants';
+import {
+    SET_DATE,
+    SET_SUBMITTED,
+    SET_CURRENT_DAY,
+    SET_INITIAL_STARTDATE
+} from '../actions/tracker/constants';
 
 class TrackerStore extends ReduceStore {
     constructor() {
@@ -56,27 +60,21 @@ class TrackerStore extends ReduceStore {
         switch(action.type) {
             case LOAD_STATE:
                 nextState = this.loadState(state, action.payload.tracker)
-                log('TrackerStore', state, action, nextState)
                 return nextState;
             case RESET:
                 nextState = this.reset(state);
-                log('TrackerStore', state, action, nextState);
                 return nextState;
             case SET_INITIAL_STARTDATE:
                 nextState = this.setInitialStartDate(state, action.payload.date);
-                log('TrackerStore', state, action, nextState);
                 return nextState;
             case SET_DATE:
                 nextState = this.setDate(state, action.payload.date);
-                log('TrackerStore', state, action, nextState);
                 return nextState;
             case SET_SUBMITTED:
                 nextState = this.setSubmitted(state, action.payload.submitted);
-                log('TrackerStore', state, action, nextState);
                 return nextState;
             case SET_CURRENT_DAY:
                 nextState = this.setCurrentDay(state, action.payload.currentDay);
-                log('TrackerStore', state, action, nextState);
                 return nextState;
             default:
                 return state;

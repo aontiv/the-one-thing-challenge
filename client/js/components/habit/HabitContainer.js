@@ -1,14 +1,12 @@
+import HabitList from './HabitList';
+import NameInput from './NameInput';
+import DateInput from './DateInput';
 import { Container } from 'flux/utils';
+import SubmitInput from './SubmitInput';
+import CategoryInput from './CategoryInput';
 import HabitStore from '../../stores/HabitStore';
 import React, { Component, Fragment } from 'react';
 import TrackerStore from '../../stores/TrackerStore';
-
-import HabitList from './HabitList';
-
-import NameInput from './NameInput';
-import DateInput from './DateInput';
-import SubmitInput from './SubmitInput';
-import CategoryInput from './CategoryInput';
 
 class HabitContainer extends Component {
     static getStores() {
@@ -38,13 +36,24 @@ class HabitContainer extends Component {
             <div className="habit-container mb-4">
                 {
                     this.state.submitted
-                        ? <HabitList name={this.state.name} category={this.state.category} startDate={this.state.startDate} />
+                        ? <HabitList
+                            name={this.state.name}
+                            category={this.state.category}
+                            startDate={this.state.startDate}
+                        />
                         : (
                             <Fragment>
-                                <CategoryInput category={this.state.category} defaultCategories={this.state.defaultCategories} />
+                                <CategoryInput
+                                    category={this.state.category}
+                                    defaultCategories={this.state.defaultCategories}
+                                />
                                 <DateInput startDate={this.state.startDate} />
                                 <NameInput name={this.state.name} />
-                                <SubmitInput name={this.state.name} category={this.state.category} startDate={this.state.startDate} />
+                                <SubmitInput
+                                    name={this.state.name}
+                                    category={this.state.category}
+                                    startDate={this.state.startDate}
+                                />
                             </Fragment>
                         )
                 }
