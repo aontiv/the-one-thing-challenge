@@ -1,9 +1,5 @@
 @import "~bootstrap/scss/bootstrap";
 
-.app {
-    padding: 0.5rem;
-}
-
 .main {
     margin: 0 auto;
     max-width: 19rem;
@@ -152,6 +148,7 @@
 
 .login-container {
     height: 100vh;
+    padding: 0.5rem;
   }
 
   .login-form {
@@ -169,13 +166,14 @@
       opacity: 0.85;
   }
 
-  .login-form__links {
-    color: blue;
+  .login-form__register, .login-form__login {
+    color: gray;
+    transition: color 250ms;
   }
 
   .login-form__register:hover, .login-form__login:hover {
     cursor: pointer;
-    text-decoration: underline;
+    color: #b40101;
   }
 
   /* ---------- ---------- --------- ---------- */

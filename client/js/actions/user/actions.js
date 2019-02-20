@@ -36,13 +36,15 @@ export const async_login = payload => {
     .then(resp => resp.json())
     .then(data => {
         if (data.status === 200) {
-            Dispatcher.dispatch({ type: ADD_USER, payload: { user: data.user } })
-            setInitialStartDate({ date: new Date() });
-
+            Dispatcher.dispatch({ type: ADD_USER, payload: { user: data.user } });
+            
             if (data.tracker.startDate) {
                 data.tracker.startDate = new Date(data.tracker.startDate);
                 Dispatcher.dispatch({ type: LOAD_STATE, payload: data });
                 updateSelected({ id: `D_${TrackerStore.getState().currentDay + 1}` });
+            }
+            else {
+                setInitialStartDate({ date: new Date() });
             }
         }
     })

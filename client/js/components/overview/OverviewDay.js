@@ -17,7 +17,7 @@ const OverviewDay = props => {
 }
 
     return (
-        <div className="overview-day border rounded-circle" style={{ color: txtColor, borderColor: 'black' }}  onClick={handleClick}>
+        <div className="overview-day rounded-circle" style={{ color: txtColor }}  onClick={handleClick}>
             <div className="circle rounded-circle h-100 d-flex justify-content-center align-items-center" style={{ backgroundColor: circleColor }}>
                 <h5 className="content mb-0">{props.day.day}</h5>
             </div>

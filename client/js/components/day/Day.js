@@ -89,7 +89,7 @@ const Day = props => {
                                     <input
                                         type="text"
                                         value={props.day.note}
-                                        placeholder="- add a note -"
+                                        placeholder="add note"
                                         style={{ fontSize: '1.25rem' }}
                                         onChange={event => handleChange(event, props.day.id)}
                                         className="w-100 border-0 text-center p-1 mb-1 text-dark"

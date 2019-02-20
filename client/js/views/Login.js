@@ -8,7 +8,7 @@ class Login extends Component {
         this.state = {
             username: '',
             password: '',
-            type: 'Login',
+            type: 'LOGIN',
             usernameErr: false,
             passwordErr: false,
         }
@@ -33,7 +33,7 @@ class Login extends Component {
         event.preventDefault();
 
         const { username, password, type } = this.state;
-        if (type === 'Register') {
+        if (type === 'REGISTER') {
             if (this.testInput(username)) {
                 if (this.testInput(password)) {
                     async_addUser({ username, password, loggedIn: true });
@@ -43,7 +43,7 @@ class Login extends Component {
             } else {
                 this.setState({ username: "", usernameErr: true });
             }
-        } else if (type === 'Login') {
+        } else if (type === 'LOGIN') {
             if (this.testInput(username)) {
                 if (this.testInput(password)) {
                     async_login({ username, password });
@@ -93,8 +93,8 @@ class Login extends Component {
                         <button className="login-form__button btn btn-block text-white" onClick={this.handleButtonClick.bind(this)}>{this.state.type}</button>
                     </div>
                     <div className="login-form__links">
-                        <span className="login-form__register" onClick={() => this.handleTypeClick('Register')}>Register</span> /
-                        <span className="login-form__login" onClick={() => this.handleTypeClick('Login')}> Login</span>
+                        <span className="login-form__register" onClick={() => this.handleTypeClick('REGISTER')}>register</span> /
+                        <span className="login-form__login" onClick={() => this.handleTypeClick('LOGIN')}> login</span>
                     </div>
                 </form>
             </section>
