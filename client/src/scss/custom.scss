@@ -1,0 +1,38 @@
+$primary: #000;
+$secondary: #b40101;
+
+$enable-responsive-font-sizes: true;
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+.custom-select {
+    -webkit-appearance: none;
+}
+
+h1 {
+    margin-bottom: 0;
+    font-size: 1.25rem;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.logout {
+    font-size: 0.75rem;
+}
+
+.card {
+    width: 18.125rem;
+    height: 25.375rem;
+}
+
+@media screen and (min-width: 576px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .logout {
+        font-size: 1rem;
+    }
+}

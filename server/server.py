@@ -5,7 +5,7 @@ from sqlalchemy.orm import sessionmaker
 from flask import Flask, render_template, request, make_response, json
 from database.dbsetup import Base, User, Tracker, Habit, Days, user_schema, tracker_schema, habit_schema, days_schema
 
-app = Flask(__name__, static_folder='./templates/static')
+app = Flask(__name__, template_folder="./dist", static_folder="./dist/static")
 app.config['SECRET_KEY'] = uuid.uuid4().hex
 
 # Database Setup
@@ -188,3 +188,7 @@ def delete_days():
     days = session.query(Days).all()
     session.close()
     return json.jsonify({ 'message': 'All Days DELETED', 'days': days })
+
+if __name__ == "__main__":
+    app.debug = True,
+    app.run()

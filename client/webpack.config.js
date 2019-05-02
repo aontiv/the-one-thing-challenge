@@ -1,29 +1,44 @@
 const path = require('path');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-    entry: "./js/index.js",
+    entry: "./src/js/index.js",
     output: {
         filename: "bundle.js",
-        publicPath: '/static/',
-        path: path.resolve('../server/templates/', 'static'),
+        publicPath: '/static/js/',
+        path: path.resolve(__dirname, "../", "server", "dist", "static", "js"),
     },
     module: {
         rules: [
             {
                 test: /\.js$/,
-                loader: ['babel-loader'],
-                include: path.resolve(__dirname, 'js'),
+                use: "babel-loader",
+                include: [ path.resolve(__dirname, "src", "js") ],
+                exclude: [ path.resolve(__dirname, "src", "node_modules") ]
             },
             {
                 test: /\.scss$/,
-                loader: ['style-loader', 'css-loader', 'sass-loader'],
-                include: path.resolve(__dirname, 'scss'),
+                use: [ 'style-loader', 'css-loader', 'sass-loader' ],
+                include: [ path.resolve(__dirname, "src", "scss") ],
+                exclude: [ path.resolve(__dirname, "src", "node_modules") ]
             },
             {
-                loader: 'file-loader',
                 test: /\.(png|jpg|jpeg|gif)$/,
-                include: path.resolve(__dirname, 'img'),
+                include: [ path.resolve(__dirname, "src", "img") ],
+                exclude: [ path.resolve(__dirname, "src", "node_modules") ],
+                use: [
+                    {
+                        loader: "file-loader",
+                        options: {
+                            outputPath: "../media"
+                        }
+                    }
+                ]
             }
         ]
-    }
+    },
+    plugins: [ new HtmlWebpackPlugin({
+        template: "src/index.html",
+        filename: "../../index.html"
+    }) ]
 }
