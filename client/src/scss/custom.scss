@@ -1,13 +1,10 @@
 $primary: #000;
 $secondary: #b40101;
 
+$enable-gradients: true;
 $enable-responsive-font-sizes: true;
 
 @import "../../node_modules/bootstrap/scss/bootstrap";
-
-.custom-select {
-    -webkit-appearance: none;
-}
 
 h1 {
     margin-bottom: 0;
@@ -18,13 +15,25 @@ h1 {
     flex: 1;
 }
 
+.flex-none {
+    flex: none;
+}
+
 .logout {
     font-size: 0.75rem;
 }
 
-.card {
-    width: 18.125rem;
-    height: 25.375rem;
+.badge {
+    width: 1.5625rem;
+    height: 1.5625rem;
+}
+
+.custom-p-1 {
+    padding: 0.0625rem;
+}
+
+.custom-select {
+    -webkit-appearance: none;
 }
 
 @media screen and (min-width: 576px) {
@@ -34,5 +43,26 @@ h1 {
 
     .logout {
         font-size: 1rem;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .badge {
+        width: 1.875rem;
+        height: 1.875rem;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .badge {
+        width: 1.5625rem;
+        height: 1.5625rem;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .badge {
+        width: 1.875rem;
+        height: 1.875rem;
     }
 }

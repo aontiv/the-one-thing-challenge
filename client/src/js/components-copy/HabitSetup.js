@@ -7,7 +7,7 @@ import HabitNameInput from "./HabitNameInput";
 class HabitSetup extends Component {
     render() {
         return (
-            <form className="col-md-8">
+            <form className="col-md-8 col-lg-10">
                 <HabitCategories />
                 <StartDateSelect />
                 <HabitNameInput />

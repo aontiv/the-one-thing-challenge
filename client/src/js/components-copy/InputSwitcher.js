@@ -5,18 +5,15 @@ import DisplayNote from "./DisplayNote";
 
 class InputSwitcher extends Component {
     render() {
-        const noteId = "";
+        const edit = false;
+        const noteId = "Walk the dog!";
 
         return (
-            <div>
-                {
-                    !noteId || (noteId && edit) ? (
-                        <InputNote />
-                    ) : (
-                        <DisplayNote />
-                    )
-                }
-            </div>
+            !noteId || (noteId && edit) ? (
+                <InputNote />
+            ) : (
+                <DisplayNote />
+            )
         )
     }
 }

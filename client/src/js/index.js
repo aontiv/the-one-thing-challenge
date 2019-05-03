@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+import "bootstrap";
 import "../scss/custom.scss";
 
 /* Old App */
