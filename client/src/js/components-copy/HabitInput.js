@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class HabitNameInput extends Component {
+class HabitInput extends Component {
     render() {
         return (
             <input className="form-control mb-1" type="text" placeholder="habit name..." />
@@ -8,4 +8,4 @@ class HabitNameInput extends Component {
     }
 }
 
-export default HabitNameInput;
+export default HabitInput;

@@ -1,23 +1,32 @@
 import React, { Component } from "react";
 
-import AuthSwitcher from "./AuthSwitcher";
+import AuthForm from "./AuthForm";
 import Navbar from "./Navbar";
 import Banner from "./Banner";
 import TrackerSwitcher from "./TrackerSwitcher";
 
+import Seed from "../Seed";
+
 class App extends Component {
     render() {
-        const userId = true;
+        const isLoggedIn = Seed.isLoggedIn;
 
         return (
             <div className="container">
-                { userId ? <Navbar username="testuser" /> : null }
+                { isLoggedIn ? <Navbar username={Seed.username} /> : null }
                 <Banner />
                 {
-                    !userId ? (
-                        <AuthSwitcher />
+                    !isLoggedIn ? (
+                        <AuthForm />
                     ) : (
-                        <TrackerSwitcher />
+                        <TrackerSwitcher
+                            habitId={Seed.habitId}
+                            habitCategories={Seed.categoryList}
+                            categoryName={Seed.categoryName}
+                            startDate={Seed.startDate}
+                            habitDescription={Seed.habitDescription}
+                            dayList={Seed.dayList}
+                        />
                     )
                 }
             </div>

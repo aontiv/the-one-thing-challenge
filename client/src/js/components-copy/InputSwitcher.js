@@ -1,18 +1,20 @@
 import React, { Component } from "react";
 
-import InputNote from "./InputNote";
+import NoteInput from "./NoteInput";
 import DisplayNote from "./DisplayNote";
 
 class InputSwitcher extends Component {
     render() {
-        const edit = false;
-        const noteId = "Walk the dog!";
+        const editNote = this.props.editNote;
+        const noteId = this.props.noteId;
 
         return (
-            !noteId || (noteId && edit) ? (
-                <InputNote />
+            !noteId || (noteId && editNote) ? (
+                <NoteInput />
             ) : (
-                <DisplayNote />
+                <DisplayNote
+                    noteText={this.props.noteText}
+                />
             )
         )
     }
