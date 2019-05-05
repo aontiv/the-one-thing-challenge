@@ -5,15 +5,21 @@ import DisplayNote from "./DisplayNote";
 
 class InputSwitcher extends Component {
     render() {
-        const editNote = this.props.editNote;
-        const noteId = this.props.noteId;
+        const { editNote, noteText } = this.props;
 
         return (
-            !noteId || (noteId && editNote) ? (
-                <NoteInput />
+            !noteText || (noteText && editNote) ? (
+                <NoteInput
+                    noteText={this.props.noteText}
+                    dayNumber={this.props.dayNumber}
+                    updateNoteText={this.props.updateNoteText}
+                />
             ) : (
                 <DisplayNote
+                    dayNumber={this.props.dayNumber}
                     noteText={this.props.noteText}
+                    updateEditNote={this.props.updateEditNote}
+                    deleteNoteText={this.props.deleteNoteText}
                 />
             )
         )

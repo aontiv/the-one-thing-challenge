@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class HabitCategories extends Component {
     render() {
-        const habitCategories = this.props.habitCategories;
+        const habitCategories = this.props.categoryList;
         const categoryElements = habitCategories.map(category => {
             return (<option key={category} value={category}>{category}</option>);
         });

@@ -9,7 +9,7 @@ class HabitSetup extends Component {
         return (
             <form className="mb-5">
                 <HabitCategories
-                    habitCategories={this.props.habitCategories}
+                    categoryList={this.props.categoryList}
                 />
                 <StartDateSelect />
                 <HabitInput />

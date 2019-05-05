@@ -5,28 +5,25 @@ import Navbar from "./Navbar";
 import Banner from "./Banner";
 import TrackerSwitcher from "./TrackerSwitcher";
 
-import Seed from "../Seed";
-
 class App extends Component {
+    state = {
+        userId: "xxxx",
+        username: "testuser",
+        isLoggedIn: true
+    };
+
     render() {
-        const isLoggedIn = Seed.isLoggedIn;
+        const isLoggedIn = this.state.isLoggedIn;
 
         return (
             <div className="container">
-                { isLoggedIn ? <Navbar username={Seed.username} /> : null }
+                { isLoggedIn ? <Navbar username={this.state.username} /> : null }
                 <Banner />
                 {
                     !isLoggedIn ? (
                         <AuthForm />
                     ) : (
-                        <TrackerSwitcher
-                            habitId={Seed.habitId}
-                            habitCategories={Seed.categoryList}
-                            categoryName={Seed.categoryName}
-                            startDate={Seed.startDate}
-                            habitDescription={Seed.habitDescription}
-                            dayList={Seed.dayList}
-                        />
+                        <TrackerSwitcher />
                     )
                 }
             </div>

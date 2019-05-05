@@ -4,7 +4,7 @@ class AuthForm extends Component {
     render() {
         return (
             <Fragment>
-                <div className="row flex-column align-items-center">
+                <div className="row flex-column align-items-center p-3">
                     <form className="col-md-8 col-lg-6 col-xl-4 shadow p-2 mb-4" noValidate>
                         <header className="bg-primary p-2 mb-4 rounded">
                             <h1 className="text-center text-white mb-0">Login</h1>

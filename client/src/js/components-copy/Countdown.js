@@ -3,7 +3,7 @@ import React, { Component } from "react";
 
 class Countdown extends Component {
     render() {
-        const daysDifference = Math.abs(moment().diff(this.props.startDate, "days"));
+        const daysDifference = Math.abs(moment().diff(this.props.startDate, "days")) + 1;
         const dayText = daysDifference > 1 ? "days" : "day";
 
         return (
