@@ -1,4 +1,3 @@
-import moment from "moment";
 import classNames from "classnames";
 import React, { Component } from "react";
 
@@ -20,13 +19,7 @@ const btnIncompleteStyles = isIncomplete => classNames(
     }
 );
 
-
 class HabitCard extends Component {
-    componentDidMount() {
-        const selectedDay = moment().diff(this.props.startDate, "days");
-        this.props.updateSelectedDay(String(selectedDay + 1))
-    }
-
     handleCompleteClick = dayNumber => {
         this.props.updateIsComplete(dayNumber, true);
     };
@@ -36,7 +29,7 @@ class HabitCard extends Component {
     };
 
     render() {
-        const selectedDay = this.props.dayList.find(day => day.selectedDay);
+        const { selectedDay } = this.props;
 
         return selectedDay ? (
             <div className="mb-5">
@@ -73,8 +66,10 @@ class HabitCard extends Component {
                 </div>
             </div>
         ) : (
-            <div className="spinner-border text-primary">
-                <span className="sr-only">Loading...</span>
+            <div className="d-flex justify-content-center">
+                <div className="spinner-border text-primary">
+                    <span className="sr-only">Loading...</span>
+                </div>
             </div>
         )
     }

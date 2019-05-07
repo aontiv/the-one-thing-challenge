@@ -1,39 +1,58 @@
-import Main from '../views/Main';
-import Login from '../views/Login';
-import { Container } from 'flux/utils';
-import React, { Component } from 'react';
-import UserStore from '../stores/UserStore';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import React, { Component, Fragment } from "react";
+
+import AuthForm from "./AuthForm";
+import Navbar from "./Navbar";
+import Banner from "./Banner";
+import TrackerSwitcher from "./TrackerSwitcher";
 
 class App extends Component {
-    static getStores() {
-        return [ UserStore ];
+    state = {};
+
+    componentDidMount() {
+        this.setState({
+            userId: "xxxx",
+            username: "testuser",
+            isLoggedIn: true
+        });
     }
 
-    static calculateState() {
-        return {
-            loggedIn: UserStore.getState().loggedIn,
-        }
-    }
+    loginUser = userSetup => {
+        this.setState({
+            ...userSetup,
+            isLoggedIn: true
+        });
+    };
+
+    logoutUser = () => {
+        this.setState({
+            userId: "",
+            username: "",
+            isLoggedIn: false
+        });
+    };
 
     render() {
-        return  (
-            <Router>
-                <div className="app">
-                    <Route path='/' exact render={() => (
-                        this.state.loggedIn
-                            ? <Main />
-                            : <Redirect to='/login' />
-                    )} />
-                    <Route path='/login' exact render={() => (
-                        this.state.loggedIn
-                            ? <Redirect to='/' />
-                            : <Login />
-                    )} />
-                </div>
-            </Router>
-        )
+        const isLoggedIn = this.state.isLoggedIn;
+
+        return (
+            <div className="container">
+                {
+                    isLoggedIn ? (
+                        <Fragment>
+                            <Navbar username={this.state.username} />
+                            <Banner />
+                            <TrackerSwitcher />
+                        </Fragment>
+                    ) : (
+                        <Fragment>
+                            <Banner />
+                            <AuthForm />
+                        </Fragment>
+                    )
+                }
+            </div>
+        );
     }
 }
 
-export default Container.create(App);
+export default App;

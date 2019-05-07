@@ -1,4 +1,0 @@
-export const SET_DATE = 'SET_DATE';
-export const SET_SUBMITTED = 'SET_SUBMITTED';
-export const SET_CURRENT_DAY = 'SET_CURRENT_DAY';
-export const SET_INITIAL_STARTDATE = 'SET_INITIAL_STARTDATE';

@@ -1,11 +1,29 @@
+import classNames from "classnames";
 import React, { Component } from "react";
 
+const listStyles = () => classNames(
+    [ "list-group-item", "d-flex", "flex-1", "justify-content-center", "align-items-center", "border-0", "custom-p-1", "p-md-1" ]
+);
+
+const badgeStyles = day => classNames(
+    [ "badge", "badge-pill", "d-flex", "justify-content-center", "align-items-center" ],
+    { "badge-danger": day.isIncomplete },
+    { "badge-success": day.isComplete },
+    { "badge-primary": !day.isComplete && !day.isComplete },
+    { "text-warning": day.noteText }
+);
+
 class DaysOverview extends Component {
+    handleItemClick = (event, dayNumber) => {
+        event.preventDefault();
+        this.props.updateSelectedDay(dayNumber);
+    };
+
     render() {
         const dayList = this.props.dayList.map(day => {
             return (
-                <li key={`d:${day.dayNumber}`} className="list-group-item d-flex flex-1 justify-content-center align-items-center border-0 custom-p-1 p-md-1">
-                    <a href="" className="badge badge-pill badge-danger d-flex justify-content-center align-items-center text-warning">{day.dayNumber}</a>
+                <li key={`d:${day.dayNumber}`} className={listStyles()}>
+                    <a href="" className={badgeStyles(day)} onClick={event => this.handleItemClick(event, day.dayNumber)}>{day.dayNumber}</a>
                 </li>
             );
         });

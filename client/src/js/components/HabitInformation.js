@@ -2,6 +2,10 @@ import moment from "moment";
 import React, { Component } from "react";
 
 class HabitInformation extends Component {
+    handleResetClick = () => {
+        this.props.resetHabit();
+    };
+            
     render() {
         const startDate = moment(this.props.startDate).format("MMMM DD, YYYY");
 
@@ -16,7 +20,7 @@ class HabitInformation extends Component {
                     <li className="list-group-item"><span className="text-secondary">Habit: </span>{this.props.habitDescription}</li>
                 </ul>
                 <div className="d-flex justify-content-center">
-                    <button className="btn btn-link text-secondary">Reset</button>
+                    <button className="btn btn-link text-secondary" type="button" onClick={this.handleResetClick}>Reset</button>
                 </div>
             </div>
         );

@@ -6,7 +6,7 @@ const Helpers = () => {
     // paramater
     const monthList = date => {
         if (date.year() === moment().year()) {
-            return generateMonthList(date.month())
+            return generateMonthList(moment().month())
         }
         else {
             return generateMonthList();  
@@ -37,14 +37,14 @@ const Helpers = () => {
     // the date only.
     const dayList = date => {
         if (date.year() === moment().year() && date.month() === moment().month()) {
-            return generateDayList(date, date.date());
+            return generateDayList(date, moment().date());
         }
         else {
             return generateDayList(date);
         }
     };
   
-    // Returns an two-dimensional array whose first index is the day index,
+    // Returns a two-dimensional array whose first index is the day index,
     // and whose second index is either true or false indicating whether or not
     // that particular day should be visually displayed as "disabled"
     const generateDayList = (date, dayNumber = undefined) => {
@@ -62,9 +62,66 @@ const Helpers = () => {
         return dayList;
     };
 
+    // Returns an array with two elements, the current year and
+    // the following year.
+    const yearList = () => {
+        let yearList = [];
+        let year = moment().year();
+
+        for (let i = 0; i < 2; i++) {
+            yearList.push(String(year));
+            year++;
+        }
+
+        return yearList;
+    };
+
+    // If the date object is an invalid date, returns the same month and year, but the day
+    // reverts to the last day of that month.
+    // e.g. { month: "4", day: "31", year: "2019" }  -> { month: "4", day: "30", year: "2019" }
+    // If the date object is valid but is before the current date, returns the current date.
+    // If the date object is valid and is or is after the current date, returns current date.
+    const validDate = date => {
+        const dateObject = moment(`${date.month}-${date.day}-${date.year}`, "M-D-YYYY");
+        const isValidDate = dateObject.isValid();
+        const isBefore = moment(dateObject, "days").isBefore(moment());
+        
+        if (!isValidDate) {
+            const daysInMonth = moment(`${date.month}-${date.year}`, "M-YYYY").daysInMonth();
+            return { ...date, day: String(daysInMonth) };
+        }
+        else if(isBefore) {
+            return { ...date, month: String(moment().month() + 1), day: String(moment().date()) };
+        }
+        else {
+            return date;
+        }
+    };
+
+    // Returns an array of 66 day objects.
+    const initDayList = () => {
+        const dayList = [];
+
+        for(let i = 0; i < 66; i++) {
+            dayList.push({
+                dayNumber: String(i + 1),
+                isComplete: false,
+                isIncomplete: false,
+                noteText: "",
+                editNote: false,
+                selectedDay: false
+            });
+        }
+
+        return dayList;
+    };
+
     return {
         dayList,
-        monthList
+        yearList,
+        monthList,
+        validDate,
+        initDayList
     };
 };
 
