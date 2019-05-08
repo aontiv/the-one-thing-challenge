@@ -6,29 +6,19 @@ import Banner from "./Banner";
 import TrackerSwitcher from "./TrackerSwitcher";
 
 class App extends Component {
-    state = {};
-
-    componentDidMount() {
-        this.setState({
-            userId: "xxxx",
-            username: "testuser",
-            isLoggedIn: true
-        });
-    }
-
-    loginUser = userSetup => {
-        this.setState({
-            ...userSetup,
-            isLoggedIn: true
-        });
+    state = {
+        userId: "",
+        username: "",
+        isLoggedIn: false
     };
 
-    logoutUser = () => {
-        this.setState({
-            userId: "",
-            username: "",
-            isLoggedIn: false
-        });
+    login = user => {
+        this.setState({ userId: user.userId, username: user.username, isLoggedIn: true });
+    };
+
+    logout = event => {
+        event.preventDefault();
+        this.setState({ userId: "", username: "", isLoggedIn: false });
     };
 
     render() {
@@ -39,14 +29,21 @@ class App extends Component {
                 {
                     isLoggedIn ? (
                         <Fragment>
-                            <Navbar username={this.state.username} />
+                            <Navbar
+                                username={this.state.username}
+                                logout={this.logout}    
+                            />
                             <Banner />
-                            <TrackerSwitcher />
+                            <TrackerSwitcher
+                                userId={this.state.userId}
+                            />
                         </Fragment>
                     ) : (
                         <Fragment>
                             <Banner />
-                            <AuthForm />
+                            <AuthForm
+                                login={this.login}
+                            />
                         </Fragment>
                     )
                 }

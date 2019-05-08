@@ -5,7 +5,13 @@ class Navbar extends Component {
         return (
             <nav className="navbar bg-primary text-white p-2 p-sm-4 rounded my-2">
                 <h1 className="navbar-brand">{this.props.username}</h1>
-                <a href="" className="text-white logout">Logout</a>
+                <a
+                    href=""
+                    className="text-white logout"
+                    onClick={this.props.logout}
+                >
+                    Logout
+                </a>
             </nav>
         );
     }

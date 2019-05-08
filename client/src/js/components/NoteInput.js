@@ -5,10 +5,6 @@ class NoteInput extends Component {
         noteInput: ""
     };
 
-    componentDidMount() {
-        this.setState({ noteInput: this.props.noteText });
-    }
-
     handleInputChange = event => {
         this.setState({ noteInput: event.target.value });
     };
