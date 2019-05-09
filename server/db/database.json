@@ -1,43 +1,423 @@
 {
   "users": [
     {
-      "user_id": "1",
+      "user_id": "1908295f-14b7-42a4-bf91-0ea20a6315d7",
       "username": "testusername",
       "password": "testpassword"
-    },
-    {
-      "user_id": "2",
-      "username": "testusername2",
-      "password": "testpassword2"
     }
   ],
   "habits": [
     {
-      "habit_id": "1",
-      "habit_description": "Walk the dog at 5:00 AM",
-      "category_name": "Personal Life",
-      "user_id": "1"
+      "habit_id": "bd46a74a-3227-4eb1-a9a7-8e15a244b51a",
+      "user_id": "1908295f-14b7-42a4-bf91-0ea20a6315d7",
+      "category_name": "Spiritual Life",
+      "habit_description": "Go to the gym at 5:00 AM"
     }
   ],
   "trackers": [
     {
-      "tracker_id": "1",
       "complete": false,
-      "start_date": "2019-05-01",
-      "user_id": "1",
       "day_list": [
-        { "dayNumber": "1" },
-        { "dayNumber": "2" },
-        { "dayNumber": "3" },
-        { "dayNumber": "4" },
-        { "dayNumber": "5" },
-        { "dayNumber": "6" },
-        { "dayNumber": "7" },
-        { "dayNumber": "8" },
-        { "dayNumber": "9" },
-        { "dayNumber": "10" },
-        { "dayNumber": "11" }
-      ]
+        {
+          "dayNumber": "1",
+          "isComplete": true,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "2",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "3",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "4",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "5",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "6",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "7",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "8",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "9",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "10",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "11",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "12",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "13",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "14",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "15",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "16",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "17",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "18",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "19",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "20",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "21",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "22",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "23",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "24",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "25",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "26",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "27",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "28",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "29",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "30",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "31",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "32",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "33",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "34",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "35",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "36",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "37",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "38",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "39",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "40",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "41",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "42",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "43",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "44",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "45",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "46",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "47",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "48",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "49",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "50",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "51",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "52",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "53",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "54",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "55",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "56",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "57",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "58",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "59",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "60",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "61",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "62",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "63",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "64",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "65",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        },
+        {
+          "dayNumber": "66",
+          "isComplete": false,
+          "isIncomplete": false,
+          "noteText": ""
+        }
+      ],
+      "start_date": "2019-05-08T07:00:00.000Z",
+      "tracker_id": "0f9d715c-8a8d-4269-b0dd-7d60a03c3657",
+      "user_id": "1908295f-14b7-42a4-bf91-0ea20a6315d7"
     }
   ]
 }

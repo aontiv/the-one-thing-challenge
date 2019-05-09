@@ -5,6 +5,16 @@ class NoteInput extends Component {
         noteInput: ""
     };
 
+    componentDidMount() {
+        this.setState({ noteInput: this.props.noteText })
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.noteText !== prevProps.noteText) {
+            this.setState({ noteInput: "" })
+        }
+    }
+
     handleInputChange = event => {
         this.setState({ noteInput: event.target.value });
     };

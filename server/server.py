@@ -94,7 +94,189 @@ def get_tracker(user_id):
     else:
         return jsonify({ "message": "no tracker" })
 
+@app.route("/add_habit", methods=["POST"])
+def set_habit():
+    rq_data = request.get_json()
+    db_file = open("./db/database.json", "r+")
+    db_data = json.load(db_file)
+
+    new_habits = []
+    for habit in db_data["habits"]:
+        new_habits.append(habit)
+    new_habits.append({
+        "habit_id": rq_data["habitId"],
+        "user_id": rq_data["userId"],
+        "category_name": rq_data["categoryName"],
+        "habit_description": rq_data["habitDescription"]
+    })
+
+    db_data["habits"] = new_habits
+    db_file.seek(0, 0)
+    db_file.truncate()
+    json.dump(db_data, db_file, indent=2)
+
+    db_file.close()
+    return jsonify({ "message": "New habit added" })
+
+@app.route("/add_tracker", methods=["POST"])
+def add_tracker():
+    rq_data = request.get_json()
+    db_file = open("./db/database.json", "r+")
+    db_data = json.load(db_file)
+
+    new_trackers = []
+    for tracker in db_data["trackers"]:
+        new_trackers.append(tracker)
+
+    new_day_list = []
+    for day in rq_data["dayList"]:
+        new_day_list.append({
+            "dayNumber": day["dayNumber"],
+            "isComplete": day["isComplete"],
+            "isIncomplete": day["isIncomplete"],
+            "noteText": day["noteText"]
+        })
     
+    new_trackers.append({
+        "complete": rq_data["complete"],
+        "day_list": new_day_list,
+        "start_date": rq_data["startDate"],
+        "tracker_id": rq_data["trackerId"],
+        "user_id": rq_data["userId"]
+    })
+
+    db_data["trackers"] = new_trackers
+    db_file.seek(0, 0)
+    db_file.truncate()
+    json.dump(db_data, db_file, indent=2)
+
+    db_file.close()
+    return jsonify({ "message": "New tracker added" })
+
+@app.route("/delete_habit/<user_id>", methods=["DELETE"])
+def delete_habit(user_id):
+    db_file = open("./db/database.json", "r+")
+    db_data = json.load(db_file)
+
+    new_habits = []
+    for habit in db_data["habits"]:
+        if habit["user_id"] != user_id:
+            new_habits.append(habit)
+    
+    db_data["habits"] = new_habits
+    db_file.seek(0, 0)
+    db_file.truncate()
+    json.dump(db_data, db_file, indent=2)
+
+    db_file.close()
+    return jsonify({ "message": "Habit deleted" })
+
+@app.route("/delete_tracker/<user_id>", methods=["DELETE"])
+def delete_tracker(user_id):
+    db_file = open("./db/database.json", "r+")
+    db_data = json.load(db_file)
+
+    new_trackers = []
+    for tracker in db_data["trackers"]:
+        if tracker["user_id"] != user_id:
+            new_trackers.append(tracker)
+    
+    db_data["trackers"] = new_trackers
+    db_file.seek(0, 0)
+    db_file.truncate()
+    json.dump(db_data, db_file, indent=2)
+
+    db_file.close()
+    return jsonify({ "message": "Tracker deleted" })
+
+@app.route("/update_note/<tracker_id>/<day_number>", methods=["UPDATE"])
+def update_note(tracker_id, day_number):
+    rq_data = request.get_data(as_text=True)
+    db_file = open("./db/database.json", "r+")
+    db_data = json.load(db_file)
+
+    selected_tracker = None
+    for tracker in db_data["trackers"]:
+        print(tracker["tracker_id"])
+        if tracker["tracker_id"] == tracker_id:
+            selected_tracker = tracker
+    
+    for day in selected_tracker["day_list"]:
+        if day["dayNumber"] == day_number:
+            day["noteText"] = rq_data
+
+    db_file.seek(0, 0)
+    db_file.truncate()
+    json.dump(db_data, db_file, indent=2)
+
+    db_file.close()
+    return jsonify({ "message": "Note updated" })
+
+@app.route("/delete_note/<tracker_id>/<day_number>", methods=["DELETE"])
+def delete_note(tracker_id, day_number):
+    db_file = open("./db/database.json", "r+")
+    db_data = json.load(db_file)
+
+    selected_tracker = None
+    for tracker in db_data["trackers"]:
+        if tracker["tracker_id"] == tracker_id:
+            selected_tracker = tracker
+    
+    for day in selected_tracker["day_list"]:
+        if day["dayNumber"] == day_number:
+            day["noteText"] = ""
+
+    db_file.seek(0, 0)
+    db_file.truncate()
+    json.dump(db_data, db_file, indent=2)
+
+    db_file.close()
+    return jsonify({ "message": "Note deleted" })
+
+@app.route("/update_is_complete/<tracker_id>/<day_number>", methods=["UPDATE"])
+def update_is_complete(tracker_id, day_number):
+    db_file = open("./db/database.json", "r+")
+    db_data = json.load(db_file)
+
+    selected_tracker = None
+    for tracker in db_data["trackers"]:
+        if tracker["tracker_id"] == tracker_id:
+            selected_tracker = tracker
+
+    for day in selected_tracker["day_list"]:
+        if day["dayNumber"] == day_number:
+            day["isComplete"] = True
+            day["isIncomplete"] = False
+    
+    db_file.seek(0, 0)
+    db_file.truncate()
+    json.dump(db_data, db_file, indent=2)
+
+    db_file.close()
+    return jsonify({ "message": "Day 'isComplete' updated" })
+
+@app.route("/update_is_incomplete/<tracker_id>/<day_number>", methods=["UPDATE"])
+def update_is_incomplete(tracker_id, day_number):
+    db_file = open("./db/database.json", "r+")
+    db_data = json.load(db_file)
+
+    selected_tracker = None
+    for tracker in db_data["trackers"]:
+        if tracker["tracker_id"] == tracker_id:
+            selected_tracker = tracker
+
+    for day in selected_tracker["day_list"]:
+        if day["dayNumber"] == day_number:
+            day["isIncomplete"] = True
+            day["isComplete"] = False
+    
+    db_file.seek(0, 0)
+    db_file.truncate()
+    json.dump(db_data, db_file, indent=2)
+
+    db_file.close()
+    return jsonify({ "message": "Day 'isIncomplete' updated" })
+
 if __name__ == "__main__":
     app.env = "development"
     app.debug = True

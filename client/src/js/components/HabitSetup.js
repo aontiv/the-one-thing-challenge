@@ -32,8 +32,7 @@ class HabitSetup extends Component {
         const startDate = moment(`${dateFields.month}-${dateFields.day}-${dateFields.year}`);
 
 
-        this.props.setHabit(habitValues);
-        this.props.setTracker(startDate);
+        this.props.init(habitValues, startDate)
     };
 
     render() {

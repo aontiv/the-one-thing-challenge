@@ -3,7 +3,7 @@ import React, { Component } from "react";
 
 class HabitInformation extends Component {
     handleResetClick = () => {
-        this.props.resetHabit();
+        this.props.reset();
     };
             
     render() {

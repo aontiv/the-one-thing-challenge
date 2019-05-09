@@ -1,4 +1,5 @@
 import moment from "moment";
+import Client from "../Client";
 import React, { Component, Fragment } from "react";
 
 import Motivation from "./Motivation";
@@ -9,7 +10,12 @@ import CurrentDay from "./CurrentDay";
 
 class CountdownSwitcher extends Component {
     componentDidMount() {
-        const selectedDay = moment().diff(this.props.startDate, "days");
+        let selectedDay = moment().diff(this.props.startDate, "days");
+
+        if (selectedDay >= 65) {
+            selectedDay = 65;
+        }
+
         this.updateSelectedDay(String(selectedDay + 1))
     }
 
@@ -21,6 +27,7 @@ class CountdownSwitcher extends Component {
             else {
                 day.selectedDay = false;
             }
+            day.editNote = false;
             return day;
         });
         this.props.updateDayList(newDayList);
@@ -35,6 +42,8 @@ class CountdownSwitcher extends Component {
             return day;
         });
         this.props.updateDayList(newDayList);
+
+        Client.updateIsIncomplete(this.props.trackerId, dayNumber);
     };
 
     updateIsComplete = (dayNumber, value) => {
@@ -46,6 +55,8 @@ class CountdownSwitcher extends Component {
             return day;
         });
         this.props.updateDayList(newDayList);
+
+        Client.updateIsComplete(this.props.trackerId, dayNumber);
     };
 
     deleteNoteText = dayNumber => {
@@ -56,6 +67,8 @@ class CountdownSwitcher extends Component {
             return day;
         });
         this.props.updateDayList(newDayList);
+
+        Client.deleteNote(this.props.trackerId, dayNumber);
     };
 
     updateEditNote = (dayNumber, value) => {
@@ -77,6 +90,8 @@ class CountdownSwitcher extends Component {
             return day;
         });
         this.props.updateDayList(newDayList);
+
+        Client.updateNote(this.props.trackerId, dayNumber, noteText)
     };
 
     render() {

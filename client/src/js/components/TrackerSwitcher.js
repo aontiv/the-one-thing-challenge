@@ -10,19 +10,8 @@ import CountdownSwitcher from "./CountdownSwitcher";
 
 class TrackerSwitcher extends Component {
     state = {
-        habit:  {
-            categoryName: "",
-            habitDescription: "",
-            habitId: "",
-            userId: ""
-        },
-        tracker: {
-            complete: false,
-            dayList: [],
-            startDate: "",
-            trackerId: "",
-            userId: ""
-        },
+        habit:  {},
+        tracker: {},
         habitReady: false,
         trackerReady: false
     };
@@ -75,14 +64,24 @@ class TrackerSwitcher extends Component {
             this.setState({ trackerReady: true });
         }
     };
-    
-    setHabit = habitValues => {
+
+    init = (habitValues, startDate) => {
         const habit = this.createHabit(habitValues);
-        this.setState({ habit: { ...this.state.habit, ...habit } });
+        const tracker = this.createTracker(startDate);
+
+        this.addHabit(habit);
+        this.addTracker(tracker);
+
+        Client.addHabit(habit)
+            .then(() => Client.addTracker(tracker));
+    };
+    
+    addHabit = habit => {
+        this.setState({ habit });
     };
 
-    setTracker = startDate => {
-        this.setState({ tracker: { ...this.state.tracker, startDate, dayList: Helpers.initDayList() }});
+    addTracker = tracker => {
+        this.setState({ tracker });
     };
 
     createHabit = habitValues => {
@@ -90,32 +89,38 @@ class TrackerSwitcher extends Component {
             categoryName: habitValues.category,
             habitDescription: habitValues.habitDescription,
             habitId: uuid.v4(),
+            userId: this.props.userId
+        };
+    };
+
+    createTracker = startDate => {
+        return {
+            complete: false,
+            dayList: Helpers.initDayList(),
+            startDate: startDate,
+            trackerId: uuid.v4(),
+            userId: this.props.userId
         };
     };
 
     updateDayList = dayList => {
-        this.setState({
-            ...this.state,
-            tracker: {
-                ...this.state.tracker,
-                dayList
-            }
-        });
+        this.setState({ tracker: { ...this.state.tracker, dayList } });
     };
 
-    resetHabit = () => {
-        this.setState({
-            habit: {
-                categoryName: "",
-                habitDescription: "",
-                habitId: "",
-            },
-            tracker: {
-                completed: false,
-                dayList: [],
-                startDate: ""
-            }
-        });
+    reset = () => {
+        this.deleteHabit();
+        this.deleteTracker();
+
+        Client.deleteHabit(this.props.userId)
+            .then(() => Client.deleteTracker(this.props.userId))
+    };
+
+    deleteHabit = () => {
+        this.setState({ habit: {} });
+    };
+
+    deleteTracker = () => {
+        this.setState({ tracker: {} })
     };
 
     render() {
@@ -130,19 +135,19 @@ class TrackerSwitcher extends Component {
                                         categoryName={this.state.habit.categoryName}
                                         startDate={this.state.tracker.startDate}
                                         habitDescription={this.state.habit.habitDescription}
-                                        resetHabit={this.resetHabit}
+                                        reset={this.reset}
                                     />
                                     <CountdownSwitcher
                                         startDate={this.state.tracker.startDate}
                                         dayList={this.state.tracker.dayList}
                                         updateDayList={this.updateDayList}
+                                        trackerId={this.state.tracker.trackerId}
                                     />
                                 </Fragment>  
                             ) : (
                                 <Fragment>
                                     <HabitSetup
-                                        setHabit={this.setHabit}
-                                        setTracker={this.setTracker}
+                                        init={this.init}
                                     />
                                     <Motivation />
                                 </Fragment>
