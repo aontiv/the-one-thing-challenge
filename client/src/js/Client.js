@@ -15,8 +15,8 @@ const Client = () => {
         });
     };
 
-    const getHabit = userId => {
-        return fetch(`/get_habit/${userId}`);
+    const getHabit = id => {
+        return fetch(`/get_habit/${id}`);
     };
 
     const getTracker = userId => {
@@ -89,18 +89,23 @@ const Client = () => {
         }
     };
 
+    const parseJSON = data => {
+        return data.json();
+    };
+
     return {
-        login,
-        register,
-        getHabit,
         addHabit,
-        getTracker,
         addTracker,
-        updateNote,
-        deleteNote,
         deleteHabit,
+        deleteNote,
         deleteTracker,
+        getHabit,
+        getTracker,
         handleResponse,
+        login,
+        parseJSON,
+        register,
+        updateNote,
         updateIsComplete,
         updateIsIncomplete
     };

@@ -26,9 +26,16 @@ class AuthForm extends Component {
         error: ""
     };
 
-    // References for client-side form validation purposes
+    // References for Bootstrap form validation purposes
     usernameInput = React.createRef();
     passwordInput = React.createRef();
+
+    inputsValid = () => {
+        const usernameValid = this.usernameInput.current.checkValidity(),
+              passwordValid = this.passwordInput.current.checkValidity();
+        
+        return usernameValid && passwordValid;
+    };
 
     handleFieldChange = evt => {
         var fields = { ...this.state.fields, [evt.target.name]: evt.target.value };
@@ -42,24 +49,21 @@ class AuthForm extends Component {
 
     handleFormSubmit = evt => {
         evt.preventDefault();
-
-        const usernameValid = this.usernameInput.current.checkValidity();
-        const passwordValid = this.passwordInput.current.checkValidity();
-
-        if (usernameValid && passwordValid) {
-            if (this.state.context === "Login") {
-                this.login();
-            }
-            else {
-                this.register();
-            }
+        if (this.inputsValid()) {
+            this.state.context === 'Login' ? this.login() : this.register();
         }
-
         this.setState({ validated: true });
     };
 
     login = () => {
         Client.login(this.state.fields)
+            .then(Client.handleResponse)
+            .then(this.loginSuccess)
+            .catch(this.loginFailure)
+    };
+
+    register = () => {
+        Client.register(this.createUser())
             .then(Client.handleResponse)
             .then(this.loginSuccess)
             .catch(this.loginFailure)
@@ -72,13 +76,6 @@ class AuthForm extends Component {
     loginFailure = data => {
         console.log(data) // eslint-disable-line
         this.setState({ error: data.message });
-    };
-
-    register = () => {
-        Client.register(this.createUser())
-            .then(Client.handleResponse)
-            .then(this.loginSuccess)
-            .catch(this.loginFailure)
     };
 
     createUser = () => {
@@ -100,28 +97,20 @@ class AuthForm extends Component {
                             <h1 className="text-center text-white mb-0">{this.state.context}</h1>
                         </header>
                         <Input
-                            className="form-control text-center"
                             type="text"
                             placeholder="username"
                             value={this.state.fields.username}
                             onChange={this.handleFieldChange}
                             name="username"
-                            required={true}
-                            minLength={5}
-                            pattern="^\w{5}(\w|-){0,15}$"
                             reference={this.usernameInput}
                             margin={1}
                         />
                         <Input
-                            className="form-control text-center"
                             type="password"
                             placeholder="password"
                             value={this.state.fields.password}
                             onChange={this.handleFieldChange}
                             name="password"
-                            required={true}
-                            minLength={5}
-                            pattern="^\w{5}(\w|-){0,15}$"
                             reference={this.passwordInput}
                             margin={0}
                         />

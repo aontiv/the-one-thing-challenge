@@ -1,4 +1,5 @@
-import moment from "moment";
+import uuid from 'uuid';
+import moment from 'moment';
 
 const Helpers = () => {
     // Calls generateMonthList with the current month index
@@ -116,12 +117,29 @@ const Helpers = () => {
         return dayList;
     };
 
+    // Construct a new user
+    const generateUser = user => ({
+        _id: uuid.v4(),
+        username: user.username,
+        password: user.password
+    });
+
+    // Construct habit
+    const constructHabit = habit => ({
+        category: habit.category,
+        description: habit.description,
+        _id: habit._id,
+        userId: habit.user_id
+    });
+
     return {
+        constructHabit,
         dayList,
-        yearList,
+        generateUser,
+        initDayList,
         monthList,
         validDate,
-        initDayList
+        yearList
     };
 };
 

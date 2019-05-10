@@ -1,20 +1,19 @@
-import React, { Component } from "react";
+import React from 'react';
 
-class Navbar extends Component {
-    render() {
-        return (
-            <nav className="navbar bg-primary text-white p-2 p-sm-4 rounded my-2">
-                <h1 className="navbar-brand">{this.props.username}</h1>
-                <a
-                    href=""
-                    className="text-white logout"
-                    onClick={this.props.logout}
-                >
-                    Logout
-                </a>
-            </nav>
-        );
-    }
-}
+const Navbar = props => (
+        <nav className='navbar bg-primary text-white p-2 p-sm-4 rounded my-2'>
+            <h1 className='navbar-brand'>{props.username}</h1>
+            <a
+                href=''
+                className='text-white logout'
+                onClick={event => {
+                    props.logout(event);
+                    props.deleteUser();    
+                }}
+            >
+                Logout
+            </a>
+        </nav>
+);
 
 export default Navbar;

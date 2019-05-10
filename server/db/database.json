@@ -1,17 +1,17 @@
 {
   "users": [
     {
-      "user_id": "1908295f-14b7-42a4-bf91-0ea20a6315d7",
+      "_id": "1908295f-14b7-42a4-bf91-0ea20a6315d7",
       "username": "testusername",
       "password": "testpassword"
     }
   ],
   "habits": [
     {
-      "habit_id": "bd46a74a-3227-4eb1-a9a7-8e15a244b51a",
+      "_id": "bd46a74a-3227-4eb1-a9a7-8e15a244b51a",
       "user_id": "1908295f-14b7-42a4-bf91-0ea20a6315d7",
-      "category_name": "Spiritual Life",
-      "habit_description": "Go to the gym at 5:00 AM"
+      "category": "Spiritual Life",
+      "description": "Go to the gym at 5:00 AM"
     }
   ],
   "trackers": [

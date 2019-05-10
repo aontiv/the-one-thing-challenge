@@ -1,22 +1,22 @@
-import React from "react";
+import React from 'react';
 
 const Input = props => {
     return (
         <div className={`form-group mb-${props.margin}`}>
             <input
-                className={props.className}
-                type={props.type}
-                placeholder={props.placeholder}
-                value={props.value}
+                className='form-control text-center'
+                minLength={5}
                 name={props.name}
                 onChange={props.onChange}
-                required={props.required}
-                minLength={props.minLength}
-                pattern={props.pattern}
+                pattern='^\w{5}(\w|-){0,15}$'
+                placeholder={props.placeholder}
                 ref={props.reference}
+                required={true}
+                type={props.type}
+                value={props.value}
             />
-            <div className="valid-feedback">Valid format</div>
-            <div className="invalid-feedback">Invalid format</div>
+            <div className='valid-feedback'>Valid format</div>
+            <div className='invalid-feedback'>Invalid format</div>
         </div>
     );
 }

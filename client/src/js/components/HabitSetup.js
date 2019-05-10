@@ -7,54 +7,49 @@ import HabitInput from "./HabitInput";
 
 class HabitSetup extends Component {
     state = {
-        hasDate: false,
         category: "",
-        dateFields: {
+        date: false,
+        description: "",
+        fields: {
             day: "",
-            year: "",
-            month: ""
-        },
-        habitDescription: ""
+            month: "",
+            year: ""
+        }
     };
 
     updateState = state => {
         this.setState({ ...this.state, ...state });
     };
 
-    handleHabitSubmit = event => {
+    handleFormSubmit = event => {
         event.preventDefault();
-
-        const { category, dateFields, habitDescription } = this.state;
-        const habitValues = {
-            category,
-            habitDescription,
-        };
-        const startDate = moment(`${dateFields.month}-${dateFields.day}-${dateFields.year}`);
-
-
-        this.props.init(habitValues, startDate)
+        const   { day, month, year } = this.state.fields,
+                habit = { category: this.state.category, description: this.state.description },
+                date = moment(`${month}-${day}-${year}`);
+                
+        this.props.init(habit, date)
     };
 
     render() {
         return (
-            <form className="mb-5" onSubmit={this.handleHabitSubmit}>
+            <form className="mb-5" onSubmit={this.handleFormSubmit}>
                 <HabitCategories
                     updateState={this.updateState}
                     category={this.state.category}
                 />
                 <StartDateSelect
-                    hasDate={this.state.hasDate}
+                    date={this.state.date}
                     updateState={this.updateState}
-                    fields={this.state.dateFields}
+                    fields={this.state.fields}
                 />
                 <HabitInput
                     updateState={this.updateState}
-                    habitDescription={this.state.habitDescription}
+                    description={this.state.description}
                 />
                 <button
                     className="btn btn-block bg-secondary text-white"
                     type="submit"
-                    disabled={!this.state.category || !this.state.habitDescription ? true : false}
+                    disabled={!this.state.category || !this.state.description ? true : false}
                 >
                     Submit
                 </button>

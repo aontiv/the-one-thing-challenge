@@ -1,51 +1,43 @@
 import React, { Component, Fragment } from "react";
 
-import AuthForm from "./AuthForm";
-import Navbar from "./Navbar";
 import Banner from "./Banner";
+import Navbar from "./Navbar";
 import TrackerSwitcher from "./TrackerSwitcher";
+import AuthorizationView from './AuthorizationView';
+
+import HomeView from './HomeView';
 
 class App extends Component {
-    state = {
-        userId: "",
-        username: "",
-        isLoggedIn: false
-    };
+    state = { loggedIn: false };
 
-    login = user => {
-        this.setState({ userId: user.userId, username: user.username, isLoggedIn: true });
+    login = () => {
+        this.setState({ loggedIn: true });
     };
 
     logout = event => {
         event.preventDefault();
-        this.setState({ userId: "", username: "", isLoggedIn: false });
+        this.setState({ loggedIn: false });
     };
 
     render() {
-        const isLoggedIn = this.state.isLoggedIn;
+        const loggedIn = this.state.loggedIn;
 
         return (
             <div className="container">
                 {
-                    isLoggedIn ? (
-                        <Fragment>
-                            <Navbar
-                                username={this.state.username}
-                                logout={this.logout}    
-                            />
-                            <Banner />
-                            <TrackerSwitcher
-                                userId={this.state.userId}
-                            />
-                        </Fragment>
-                    ) : (
-                        <Fragment>
-                            <Banner />
-                            <AuthForm
-                                login={this.login}
-                            />
-                        </Fragment>
-                    )
+                    loggedIn ? (
+                        <HomeView logout={this.logout} />
+                        // <Fragment>
+                        //     <Navbar
+                        //         username={this.props.username}
+                        //         logout={this.logout}    
+                        //     />
+                        //     <Banner />
+                        //     <TrackerSwitcher
+                        //         userId={this.state.userId}
+                        //     />
+                        // </Fragment>
+                    ) : <AuthorizationView login={this.login} />
                 }
             </div>
         );

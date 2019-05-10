@@ -30,7 +30,7 @@ def login():
     elif user_match != False and password_match == False:
         return make_response((json.dumps({ "message": "Password is incorrect" }), 400, { "Content-Type": "application/json" }))
     else:
-        return jsonify({ "userId": user_match["user_id"], "username": user_match["username"] })
+        return jsonify({ "_id": user_match["_id"], "username": user_match["username"] })
 
 @app.route("/register", methods=["POST"])
 def register():
@@ -55,19 +55,19 @@ def register():
         json.dump(db_data, db_file, indent=2)
 
         db_file.close()
-        return jsonify({ "userId": rq_data["user_id"], "username": rq_data["username"] })
+        return jsonify({ "_id": rq_data["_id"], "username": rq_data["username"] })
     else:
         db_file.close()
         return make_response((json.dumps({ "message": "Username already exists" }), 400, { "Content-Type": "application/json" }))
 
-@app.route("/get_habit/<user_id>", methods=["GET"])
-def get_habit(user_id):
+@app.route("/get_habit/<id>", methods=["GET"])
+def get_habit(id):
     db_file = open("./db/database.json", "r")
     db_data = json.load(db_file)
 
     habit_match = None
     for habit in db_data["habits"]:
-        if habit["user_id"] == user_id:
+        if habit["user_id"] == id:
             habit_match = habit
     
     db_file.close()
