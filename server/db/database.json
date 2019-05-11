@@ -8,416 +8,421 @@
   ],
   "habits": [
     {
-      "_id": "bd46a74a-3227-4eb1-a9a7-8e15a244b51a",
+      "_id": "b7945d00-e6a9-43e7-b0a0-9dff457e5e82",
       "user_id": "1908295f-14b7-42a4-bf91-0ea20a6315d7",
-      "category": "Spiritual Life",
-      "description": "Go to the gym at 5:00 AM"
+      "category": "Physical Health",
+      "description": "Lose 10 lbs / month"
     }
   ],
   "trackers": [
     {
       "complete": false,
+      "date": "2019-05-10T07:00:00.000Z",
+      "_id": "0922d9d1-fde5-4205-866d-e0ae9061e9d0",
+      "user_id": "1908295f-14b7-42a4-bf91-0ea20a6315d7"
+    }
+  ],
+  "day_lists": [
+    {
+      "user_id": "1908295f-14b7-42a4-bf91-0ea20a6315d7",
       "day_list": [
         {
-          "dayNumber": "1",
-          "isComplete": true,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 1,
+          "incomplete": true,
           "noteText": ""
         },
         {
-          "dayNumber": "2",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 2,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "3",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 3,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "4",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 4,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "5",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 5,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "6",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 6,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "7",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 7,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "8",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 8,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "9",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 9,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "10",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 10,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "11",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 11,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "12",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 12,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "13",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 13,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "14",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 14,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "15",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 15,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "16",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 16,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "17",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 17,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "18",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 18,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "19",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 19,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "20",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 20,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "21",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 21,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "22",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 22,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "23",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 23,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "24",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 24,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "25",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 25,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "26",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 26,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "27",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 27,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "28",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 28,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "29",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 29,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "30",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 30,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "31",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 31,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "32",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 32,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "33",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 33,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "34",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 34,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "35",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 35,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "36",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 36,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "37",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 37,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "38",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 38,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "39",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 39,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "40",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 40,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "41",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 41,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "42",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 42,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "43",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 43,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "44",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 44,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "45",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 45,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "46",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 46,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "47",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 47,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "48",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 48,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "49",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 49,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "50",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 50,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "51",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 51,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "52",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 52,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "53",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 53,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "54",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 54,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "55",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 55,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "56",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 56,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "57",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 57,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "58",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 58,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "59",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 59,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "60",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 60,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "61",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 61,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "62",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 62,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "63",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 63,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "64",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 64,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "65",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 65,
+          "incomplete": false,
           "noteText": ""
         },
         {
-          "dayNumber": "66",
-          "isComplete": false,
-          "isIncomplete": false,
+          "complete": false,
+          "day": 66,
+          "incomplete": false,
           "noteText": ""
         }
-      ],
-      "start_date": "2019-05-08T07:00:00.000Z",
-      "tracker_id": "0f9d715c-8a8d-4269-b0dd-7d60a03c3657",
-      "user_id": "1908295f-14b7-42a4-bf91-0ea20a6315d7"
+      ]
     }
   ]
 }

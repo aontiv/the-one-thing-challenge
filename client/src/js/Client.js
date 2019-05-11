@@ -39,6 +39,14 @@ const Client = () => {
         });
     };
 
+    const addDayList = dayListObject => {
+        return fetch("/add_day_list", {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(dayListObject)
+        });
+    };
+
     const deleteHabit = userId => {
         return fetch(`/delete_habit/${userId}`, {
             method: "DELETE",
@@ -47,7 +55,13 @@ const Client = () => {
 
     const deleteTracker = userId => {
         return fetch(`/delete_tracker/${userId}`, {
-            method: "DELETE",
+            method: 'DELETE',
+        });
+    };
+
+    const deleteDayList = userId => {
+        return fetch(`/delete_day_list/${userId}`, {
+            method: 'DELETE'
         });
     };
 
@@ -65,14 +79,14 @@ const Client = () => {
         });
     };
 
-    const updateIsComplete = (trackerId, dayNumber) => {
-        return fetch(`/update_is_complete/${trackerId}/${dayNumber}`, {
+    const updateComplete = (userId, dayNumber) => {
+        return fetch(`/update_complete/${userId}/${dayNumber}`, {
             method: "UPDATE"
         });
     };
 
-    const updateIsIncomplete = (trackerId, dayNumber) => {
-        return fetch(`/update_is_incomplete/${trackerId}/${dayNumber}`, {
+    const updateIncomplete = (userId, dayNumber) => {
+        return fetch(`/update_incomplete/${userId}/${dayNumber}`, {
             method: "UPDATE"
         });
     };
@@ -94,8 +108,10 @@ const Client = () => {
     };
 
     return {
+        addDayList,
         addHabit,
         addTracker,
+        deleteDayList,
         deleteHabit,
         deleteNote,
         deleteTracker,
@@ -106,8 +122,8 @@ const Client = () => {
         parseJSON,
         register,
         updateNote,
-        updateIsComplete,
-        updateIsIncomplete
+        updateComplete,
+        updateIncomplete
     };
 };
 

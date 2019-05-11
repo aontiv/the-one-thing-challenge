@@ -6,8 +6,8 @@ import {
 } from '../constants';
 
 export const dayReducer = (state = [], action) => {
-    const day = state.find(day => day.id === action.id);
-    const index = state.findIndex(day => day.id === action.id);
+    const day = state.find(day => day.day === action.day);
+    const index = state.findIndex(day => day.day === action.day);
 
     switch (action.type) {
         case SET_COMPLETE:

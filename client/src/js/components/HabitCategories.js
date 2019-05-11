@@ -1,35 +1,26 @@
-import React, { Component } from "react";
+import React from 'react';
 
-class HabitCategories extends Component {
-    state = {
-        defaultList: [
-            "Spiritual Life",
-            "Physical Health",
-            "Personal Life",
-            "Key Relationships",
-            "Jobs",
-            "Business",
-            "Financial Life"
-        ]
-    };
+const HabitCategories = props => {
+    const categoryList = [
+        'Business',
+        'Financial Life',
+        'Jobs',
+        'Key Relationships',
+        'Personal Life',
+        'Physical Health',
+        'Spiritual Life'
+    ];
 
-    handleChange = event => {
-        this.props.updateState({ category: event.target.value });
-    };
-
-    render() {
-        const habitCategories = this.state.defaultList;
-        const categoryElements = habitCategories.map(category => {
-            return (<option key={category} value={category}>{category}</option>);
-        });
-
-        return (
-            <select className="custom-select mb-1" value={this.props.category} onChange={this.handleChange}>
-                <option value="" disabled={true}>Choose A Category</option>
-                { categoryElements }
-            </select>
-        );
-    }
+    return (
+        <select className='custom-select mb-1' value={props.category} name='category' onChange={props.onChange}>
+            <option value="" disabled={true}>Choose A Category</option>
+            {
+                categoryList.map(category => {
+                    return (<option key={category} value={category}>{category}</option>)
+                })
+            }
+        </select>
+    );
 }
 
 export default HabitCategories;

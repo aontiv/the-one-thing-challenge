@@ -1,63 +1,53 @@
-import classNames from "classnames";
-import React, { Component } from "react";
+import classNames from 'classnames';
+import React, { Component } from 'react';
 
-import InputSwitcher from "./InputSwitcher";
+// import InputSwitcher from './InputSwitcher';
 
-const btnCompleteStyles = isComplete => classNames(
-    [ "btn", "btn-block", "mb-1" ],
+const btnCompleteStyles = complete => classNames(
+    [ 'btn', 'btn-block', 'mb-1' ],
     {
-        "btn-outline-success": !isComplete ? true : false,
-        "btn-success": isComplete ? true : false
+        'btn-outline-success': !complete ? true : false,
+        'btn-success': complete ? true : false
     }
 );
 
-const btnIncompleteStyles = isIncomplete => classNames(
-    [ "btn", "btn-block" ],
+const btnIncompleteStyles = incomplete => classNames(
+    [ 'btn', 'btn-block' ],
     {
-        "btn-outline-danger": !isIncomplete ? true : false,
-        "btn-danger": isIncomplete ? true : false
+        'btn-outline-danger': !incomplete ? true : false,
+        'btn-danger': incomplete ? true : false
     }
 );
 
-class HabitCard extends Component {
-    handleCompleteClick = dayNumber => {
-        this.props.updateIsComplete(dayNumber, true);
-    };
-
-    handleIncompleteClick = dayNumber => {
-        this.props.updateIsIncomplete(dayNumber, true);
-    };
-
+class DayCard extends Component {
     render() {
-        const { selectedDay } = this.props;
-
-        return selectedDay ? (
+        return this.props.selected ? (
             <div className="mb-5">
                 <div className="card p-0 shadow-sm">
                     <header className="card-header text-white bg-primary rounded mb-5">
-                        <h1>{selectedDay.dayNumber}</h1>
+                        <h1>{this.props.selected.day}</h1>
                     </header>
                     <div className="card-body d-flex flex-column justify-content-between align-items-center">
-                        <InputSwitcher
+                        {/* <InputSwitcher
                             editNote={selectedDay.editNote}
                             dayNumber={selectedDay.dayNumber}
                             noteText={selectedDay.noteText}
                             updateNoteText={this.props.updateNoteText}
                             updateEditNote={this.props.updateEditNote}
                             deleteNoteText={this.props.deleteNoteText}
-                        />
+                        /> */}
                         <div className="btn-group-vertical w-100">
                             <button
-                                className={btnCompleteStyles(selectedDay.isComplete)}
+                                className={btnCompleteStyles(this.props.selected.complete)}
                                 type="button"
-                                onClick={() => this.handleCompleteClick(selectedDay.dayNumber)}
+                                onClick={() => this.props.onCompleteClick(this.props.selected.day)}
                             >
                                 Complete
                             </button>
                             <button
-                                className={btnIncompleteStyles(selectedDay.isIncomplete)}
+                                className={btnIncompleteStyles(this.props.selected.incomplete)}
                                 type="button"
-                                onClick={() => this.handleIncompleteClick(selectedDay.dayNumber)}
+                                onClick={() => this.props.onIncompleteClick(this.props.selected.day)}
                             >
                                 Incomplete
                             </button>
@@ -75,4 +65,4 @@ class HabitCard extends Component {
     }
 }
 
-export default HabitCard;
+export default DayCard;

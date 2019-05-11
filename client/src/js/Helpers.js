@@ -83,60 +83,67 @@ const Helpers = () => {
     // If the date object is valid but is before the current date, returns the current date.
     // If the date object is valid and is or is after the current date, returns current date.
     const validDate = date => {
-        const dateObject = moment(`${date.month}-${date.day}-${date.year}`, "M-D-YYYY");
-        const isValidDate = dateObject.isValid();
-        const isBefore = moment(dateObject, "days").isBefore(moment());
+        let dateObject = moment(`${date.month}-${date.day}-${date.year}`, 'M-D-YYYY'),
+            isValidDate = dateObject.isValid(),
+            isBefore = moment(dateObject, 'days').isBefore(moment());
         
         if (!isValidDate) {
-            const daysInMonth = moment(`${date.month}-${date.year}`, "M-YYYY").daysInMonth();
-            return { ...date, day: String(daysInMonth) };
+            const daysInMonth = moment(`${date.month}-${date.year}`, 'M-YYYY').daysInMonth();
+            isBefore = moment(`${date.month}-${daysInMonth}-${date.year}`, 'M-D-YYYY', 'days').isBefore(moment());
+            
+            return isBefore
+                ? { month: moment().month() + 1, day: moment().date(), year: moment().year() }
+                : { ...date, day: daysInMonth };
         }
         else if(isBefore) {
-            return { ...date, month: String(moment().month() + 1), day: String(moment().date()) };
+            return { month: moment().month() + 1, day: moment().date(), year: moment().year() };
         }
         else {
             return date;
         }
     };
 
-    // Returns an array of 66 day objects.
-    const initDayList = () => {
-        const dayList = [];
-
-        for(let i = 0; i < 66; i++) {
-            dayList.push({
-                dayNumber: String(i + 1),
-                isComplete: false,
-                isIncomplete: false,
-                noteText: "",
-                editNote: false,
-                selectedDay: false
-            });
-        }
-
-        return dayList;
-    };
-
-    // Construct a new user
-    const generateUser = user => ({
+    const constructUser = user => ({
         _id: uuid.v4(),
         username: user.username,
         password: user.password
     });
 
-    // Construct habit
-    const constructHabit = habit => ({
+    const constructHabit = (habit, id) => ({
         category: habit.category,
         description: habit.description,
-        _id: habit._id,
-        userId: habit.user_id
+        _id: uuid.v4(),
+        userId: id
     });
 
+    const constructTracker = (date, id) => ({
+        complete: false,
+        date,
+        _id: uuid.v4(),
+        userId: id
+    });
+
+    const constructDayList = id => {
+        const dayList = [];
+
+        for(let i = 0; i < 66; i++) {
+            dayList.push({
+                complete: false,
+                day: (i + 1),
+                incomplete: false,
+                noteText: ''
+            });
+        }
+
+        return { userId: id, dayList };
+    };
+
     return {
+        constructDayList,
         constructHabit,
+        constructTracker,
+        constructUser,
         dayList,
-        generateUser,
-        initDayList,
         monthList,
         validDate,
         yearList

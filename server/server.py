@@ -104,10 +104,10 @@ def set_habit():
     for habit in db_data["habits"]:
         new_habits.append(habit)
     new_habits.append({
-        "habit_id": rq_data["habitId"],
+        "_id": rq_data["_id"],
         "user_id": rq_data["userId"],
-        "category_name": rq_data["categoryName"],
-        "habit_description": rq_data["habitDescription"]
+        "category": rq_data["category"],
+        "description": rq_data["description"]
     })
 
     db_data["habits"] = new_habits
@@ -127,21 +127,11 @@ def add_tracker():
     new_trackers = []
     for tracker in db_data["trackers"]:
         new_trackers.append(tracker)
-
-    new_day_list = []
-    for day in rq_data["dayList"]:
-        new_day_list.append({
-            "dayNumber": day["dayNumber"],
-            "isComplete": day["isComplete"],
-            "isIncomplete": day["isIncomplete"],
-            "noteText": day["noteText"]
-        })
     
     new_trackers.append({
         "complete": rq_data["complete"],
-        "day_list": new_day_list,
-        "start_date": rq_data["startDate"],
-        "tracker_id": rq_data["trackerId"],
+        "date": rq_data["date"],
+        "_id": rq_data["_id"],
         "user_id": rq_data["userId"]
     })
 
@@ -153,14 +143,37 @@ def add_tracker():
     db_file.close()
     return jsonify({ "message": "New tracker added" })
 
-@app.route("/delete_habit/<user_id>", methods=["DELETE"])
-def delete_habit(user_id):
+@app.route("/add_day_list", methods=["POST"])
+def add_day_list():
+    rq_data = request.get_json()
+    db_file = open("./db/database.json", "r+")
+    db_data = json.load(db_file)
+
+    new_day_list = []
+    for day_list_object in db_data["day_lists"]:
+        new_day_list.append(day_list_object)
+    
+    new_day_list.append({
+        "user_id": rq_data["userId"],
+        "day_list": rq_data["dayList"]
+    })
+
+    db_data["day_lists"] = new_day_list
+    db_file.seek(0, 0)
+    db_file.truncate()
+    json.dump(db_data, db_file, indent=2)
+
+    db_file.close()
+    return jsonify({ "message": "New day list added" })
+
+@app.route("/delete_habit/<id>", methods=["DELETE"])
+def delete_habit(id):
     db_file = open("./db/database.json", "r+")
     db_data = json.load(db_file)
 
     new_habits = []
     for habit in db_data["habits"]:
-        if habit["user_id"] != user_id:
+        if habit["user_id"] != id:
             new_habits.append(habit)
     
     db_data["habits"] = new_habits
@@ -171,14 +184,14 @@ def delete_habit(user_id):
     db_file.close()
     return jsonify({ "message": "Habit deleted" })
 
-@app.route("/delete_tracker/<user_id>", methods=["DELETE"])
-def delete_tracker(user_id):
+@app.route("/delete_tracker/<id>", methods=["DELETE"])
+def delete_tracker(id):
     db_file = open("./db/database.json", "r+")
     db_data = json.load(db_file)
 
     new_trackers = []
     for tracker in db_data["trackers"]:
-        if tracker["user_id"] != user_id:
+        if tracker["user_id"] != id:
             new_trackers.append(tracker)
     
     db_data["trackers"] = new_trackers
@@ -188,6 +201,24 @@ def delete_tracker(user_id):
 
     db_file.close()
     return jsonify({ "message": "Tracker deleted" })
+
+@app.route("/delete_day_list/<id>", methods=["DELETE"])
+def delete_day_list(id):
+    db_file = open("./db/database.json", "r+")
+    db_data = json.load(db_file)
+
+    new_day_lists = []
+    for day_list in db_data["day_lists"]:
+        if day_list["user_id"] != id:
+            new_day_list.append(day_list)
+    
+    db_data["day_lists"] = new_day_lists
+    db_file.seek(0, 0)
+    db_file.truncate()
+    json.dump(db_data, db_file, indent=2)
+
+    db_file.close()
+    return jsonify({ "message": "Day list deleted" })
 
 @app.route("/update_note/<tracker_id>/<day_number>", methods=["UPDATE"])
 def update_note(tracker_id, day_number):
@@ -233,49 +264,49 @@ def delete_note(tracker_id, day_number):
     db_file.close()
     return jsonify({ "message": "Note deleted" })
 
-@app.route("/update_is_complete/<tracker_id>/<day_number>", methods=["UPDATE"])
-def update_is_complete(tracker_id, day_number):
+@app.route("/update_complete/<id>/<day_number>", methods=["UPDATE"])
+def update_complete(id, day_number):
     db_file = open("./db/database.json", "r+")
     db_data = json.load(db_file)
 
-    selected_tracker = None
-    for tracker in db_data["trackers"]:
-        if tracker["tracker_id"] == tracker_id:
-            selected_tracker = tracker
-
-    for day in selected_tracker["day_list"]:
-        if day["dayNumber"] == day_number:
-            day["isComplete"] = True
-            day["isIncomplete"] = False
+    selected_day_list = None
+    for day_list in db_data["day_lists"]:
+        if day_list["user_id"] == id:
+            selected_day_list = day_list
+    
+    for day in selected_day_list["day_list"]:
+        if day["day"] == int(day_number):
+            day["complete"] = True
+            day["incomplete"] = False
     
     db_file.seek(0, 0)
     db_file.truncate()
     json.dump(db_data, db_file, indent=2)
 
     db_file.close()
-    return jsonify({ "message": "Day 'isComplete' updated" })
+    return jsonify({ "message": "Day 'complete' updated" })
 
-@app.route("/update_is_incomplete/<tracker_id>/<day_number>", methods=["UPDATE"])
-def update_is_incomplete(tracker_id, day_number):
+@app.route("/update_incomplete/<id>/<day_number>", methods=["UPDATE"])
+def update_incomplete(id, day_number):
     db_file = open("./db/database.json", "r+")
     db_data = json.load(db_file)
 
-    selected_tracker = None
-    for tracker in db_data["trackers"]:
-        if tracker["tracker_id"] == tracker_id:
-            selected_tracker = tracker
-
-    for day in selected_tracker["day_list"]:
-        if day["dayNumber"] == day_number:
-            day["isIncomplete"] = True
-            day["isComplete"] = False
+    selected_day_list = None
+    for day_list in db_data["day_lists"]:
+        if day_list["user_id"] == id:
+            selected_day_list = day_list
+    
+    for day in selected_day_list["day_list"]:
+        if day["day"] == int(day_number):
+            day["incomplete"] = True
+            day["complete"] = False
     
     db_file.seek(0, 0)
     db_file.truncate()
     json.dump(db_data, db_file, indent=2)
 
     db_file.close()
-    return jsonify({ "message": "Day 'isIncomplete' updated" })
+    return jsonify({ "message": "Day 'incomplete' updated" })
 
 if __name__ == "__main__":
     app.env = "development"

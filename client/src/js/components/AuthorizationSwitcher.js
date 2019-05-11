@@ -42,7 +42,7 @@ class AuthorizationSwitcher extends Component {
         if (this.inputsValid()) {
             this.state.context === 'Login'
                 ? this.props.loginAsync(this.state.fields, this.success, this.failure)
-                : this.props.registerAsync(Helpers.generateUser(this.state.fields), this.success, this.failure);
+                : this.props.registerAsync(Helpers.constructUser(this.state.fields), this.success, this.failure);
         }
         this.setState({ validated: true });
     };

@@ -1,35 +1,19 @@
-import moment from "moment";
-import classNames from "classnames";
-import React, { Component } from "react";
+import React from 'react';
+import classNames from 'classnames';
 
-const headerStyles = currentDay => classNames(
-    [ "btn", "btn-link" ],
-    { "text-secondary": currentDay >= 65 }
+const headerStyles = current => classNames(
+    [ 'btn', 'btn-link' ],
+    { 'text-secondary': current >= 66 }
 );
 
-class CurrentDay extends Component {
-    handleCurrentDayClick = (event, dayNumber) => {
-        event.preventDefault();
-        this.props.updateSelectedDay(String(dayNumber))
-    };
-
-    render() {
-        let currentDay = moment().diff(this.props.startDate, "days");
-
-        if (currentDay >= 65) {
-            currentDay = 65;
-        }
-
-        return (
-            <div className="mb-2 d-flex justify-content-center">
-                <a href="" className={headerStyles(currentDay)}>
-                    <h2 onClick={event => this.handleCurrentDayClick( event,(currentDay + 1))}>
-                        {currentDay >= 65 ? "Challenge Complete" : currentDay + 1}
-                    </h2>
-                </a>
-            </div>
-        );
-    }
-}
+const CurrentDay = props => (
+    <div className='mb-2 d-flex justify-content-center'>
+        <a href='' className={headerStyles(props.current)}>
+            <h2 onClick={event => props.onClick( event,(props.current))}>
+                {props.current >= 66 ? 'Challenge Complete' : (props.current)}
+            </h2>
+        </a>
+    </div>
+);
 
 export default CurrentDay;

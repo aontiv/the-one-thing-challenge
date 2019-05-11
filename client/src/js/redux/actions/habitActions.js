@@ -20,7 +20,19 @@ export const getHabitAsync = (id, setHabitPresent) => dispatch => {
         .then(data => {
             if (data.message === undefined) {
                 dispatch(setHabit(data));
+                setHabitPresent(true);
             }
-            setHabitPresent();
         })
+};
+
+export const loadHabitAsync = habit => dispatch => {
+    dispatch(setHabit(habit));
+
+    return Client.addHabit(habit);
+};
+
+export const resetHabitAsync = id => dispatch => {
+    dispatch(deleteHabit());
+
+    return Client.deleteHabit(id);
 };
