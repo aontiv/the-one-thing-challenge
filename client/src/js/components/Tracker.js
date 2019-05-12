@@ -22,13 +22,12 @@ class Tracker extends Component {
             .then(() => resetTrackerAsync(userId))
             .then(() => {
                 resetDayListAsync(userId);
-                this.props.setHabitPresent(false);
+                this.props.setReady(false);
             });
     };
 
     render() {
         const date = moment(this.props.date).format('MMMM DD, YYYY');
-
 
         return (
             <Fragment>

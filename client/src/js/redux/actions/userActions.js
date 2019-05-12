@@ -26,7 +26,7 @@ export const loginAsync = (user, success, failure) => dispatch => {
 };
 
 export const registerAsync = (user, success, failure) => dispatch => {
-    Client.register(this.createUser())
+    Client.register(user)
         .then(Client.handleResponse)
         .then(data => {
             success(data);

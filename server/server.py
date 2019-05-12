@@ -77,14 +77,14 @@ def get_habit(id):
     else:
         return jsonify({ "message": "no habit" })
 
-@app.route("/get_tracker/<user_id>", methods=["GET"])
-def get_tracker(user_id):
+@app.route("/get_tracker/<id>", methods=["GET"])
+def get_tracker(id):
     db_file = open("./db/database.json", "r")
     db_data = json.load(db_file)
 
     tracker_match = None
     for tracker in db_data["trackers"]:
-        if tracker["user_id"] == user_id:
+        if tracker["user_id"] == id:
             tracker_match = tracker
     
     db_file.close()
@@ -93,6 +93,23 @@ def get_tracker(user_id):
         return jsonify(tracker)
     else:
         return jsonify({ "message": "no tracker" })
+
+@app.route("/get_day_list/<id>", methods=["GET"])
+def get_day_list(id):
+    db_file = open("./db/database.json", "r")
+    db_data = json.load(db_file)
+
+    day_list_match = None
+    for day_list in db_data["day_lists"]:
+        if day_list["user_id"] == id:
+            day_list_match = day_list
+    
+    db_file.close()
+
+    if day_list_match:
+        return jsonify(day_list_match["day_list"])
+    else:
+        return jsonify({ "message": "no day list" })
 
 @app.route("/add_habit", methods=["POST"])
 def set_habit():
@@ -150,15 +167,21 @@ def add_day_list():
     db_data = json.load(db_file)
 
     new_day_list = []
-    for day_list_object in db_data["day_lists"]:
-        new_day_list.append(day_list_object)
+    for day in rq_data["dayList"]:
+        new_day_list.append({
+            "day": day["day"],
+            "complete": day["complete"],
+            "incomplete": day["incomplete"],
+            "note_text": day["note_text"]
+        })
     
-    new_day_list.append({
+    rq_data["dayList"] = new_day_list
+
+    db_data["day_lists"].append({
         "user_id": rq_data["userId"],
         "day_list": rq_data["dayList"]
     })
 
-    db_data["day_lists"] = new_day_list
     db_file.seek(0, 0)
     db_file.truncate()
     json.dump(db_data, db_file, indent=2)
@@ -210,7 +233,7 @@ def delete_day_list(id):
     new_day_lists = []
     for day_list in db_data["day_lists"]:
         if day_list["user_id"] != id:
-            new_day_list.append(day_list)
+            new_day_lists.append(day_list)
     
     db_data["day_lists"] = new_day_lists
     db_file.seek(0, 0)
@@ -220,21 +243,20 @@ def delete_day_list(id):
     db_file.close()
     return jsonify({ "message": "Day list deleted" })
 
-@app.route("/update_note/<tracker_id>/<day_number>", methods=["UPDATE"])
-def update_note(tracker_id, day_number):
+@app.route("/update_note_text/<id>/<day_number>", methods=["UPDATE"])
+def update_note_text(id, day_number):
     rq_data = request.get_data(as_text=True)
     db_file = open("./db/database.json", "r+")
     db_data = json.load(db_file)
 
-    selected_tracker = None
-    for tracker in db_data["trackers"]:
-        print(tracker["tracker_id"])
-        if tracker["tracker_id"] == tracker_id:
-            selected_tracker = tracker
+    selected_day_list = None
+    for day_list in db_data["day_lists"]:
+        if day_list["user_id"] == id:
+            selected_day_list = day_list
     
-    for day in selected_tracker["day_list"]:
-        if day["dayNumber"] == day_number:
-            day["noteText"] = rq_data
+    for day in selected_day_list["day_list"]:
+        if day["day"] == int(day_number):
+            day["note_text"] = rq_data
 
     db_file.seek(0, 0)
     db_file.truncate()
@@ -243,19 +265,19 @@ def update_note(tracker_id, day_number):
     db_file.close()
     return jsonify({ "message": "Note updated" })
 
-@app.route("/delete_note/<tracker_id>/<day_number>", methods=["DELETE"])
-def delete_note(tracker_id, day_number):
+@app.route("/delete_note_text/<id>/<day_number>", methods=["DELETE"])
+def delete_note_text(id, day_number):
     db_file = open("./db/database.json", "r+")
     db_data = json.load(db_file)
 
-    selected_tracker = None
-    for tracker in db_data["trackers"]:
-        if tracker["tracker_id"] == tracker_id:
-            selected_tracker = tracker
+    selected_day_list = None
+    for day_list in db_data["day_lists"]:
+        if day_list["user_id"] == id:
+            selected_day_list = day_list
     
-    for day in selected_tracker["day_list"]:
-        if day["dayNumber"] == day_number:
-            day["noteText"] = ""
+    for day in selected_day_list["day_list"]:
+        if day["day"] == int(day_number):
+            day["note_text"] = ""
 
     db_file.seek(0, 0)
     db_file.truncate()

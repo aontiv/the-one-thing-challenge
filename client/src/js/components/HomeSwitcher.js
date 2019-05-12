@@ -8,20 +8,23 @@ import Tracker from './Tracker';
 
 import Helpers from '../Helpers';
 import { getHabitAsync, loadHabitAsync } from '../redux/actions/habitActions';
-import { loadTrackerAsync } from '../redux/actions/trackerActions';
-import { loadDayListAsync } from '../redux/actions/dayListActions';
+import { loadTrackerAsync, getTrackerAsync } from '../redux/actions/trackerActions';
+import { loadDayListAsync, getDayListAsync } from '../redux/actions/dayListActions';
 
 class HomeSwitcher extends Component {
-    state = { habitPresent: false };
+    state = { ready: false };
 
     componentDidUpdate(prevProps) {
         if (prevProps.userId !== this.props.userId) {
-            this.props.getHabitAsync(this.props.userId, this.setHabitPresent);
+            this.props.getHabitAsync(this.props.userId)
+                .then(() => this.props.getTrackerAsync(this.props.userId))
+                .then(() => this.props.getDayListAsync(this.props.userId))
+                .then(() => this.setReady(true));
         }
     }
 
-    setHabitPresent = value => {
-        this.setState({ habitPresent: value });
+    setReady = value => {
+        this.setState({ ready: value });
     };
 
     initHabitTrackerDayList = (habit, date) => {
@@ -33,18 +36,18 @@ class HomeSwitcher extends Component {
             .then(() => this.props.loadTrackerAsync(newTracker))
             .then(() => {
                 this.props.loadDayListAsync(newDayList)
-                this.setHabitPresent(true);
+                this.setReady(true);
             });
     };
 
     render() {
-        const habitPresent = this.state.habitPresent;
+        const ready = this.state.ready;
 
-        return habitPresent
+        return ready && this.props.habitId
             ? (
                 <HomeSwitcherMarkup>
                     <Tracker
-                        setHabitPresent={this.setHabitPresent}
+                        setReady={this.setReady}
                     />
                 </HomeSwitcherMarkup>
             )
@@ -59,11 +62,17 @@ class HomeSwitcher extends Component {
     }
 }
 
+const mapStateToProps = state => ({
+    habitId: state.habit._id
+});
+
 const mapDispatchToProps = dispatch => ({
     getHabitAsync: (id, setHabitPresent) => dispatch(getHabitAsync(id, setHabitPresent)),
     loadHabitAsync: newHabit => dispatch(loadHabitAsync(newHabit)),
+    getTrackerAsync: id => dispatch(getTrackerAsync(id)),
     loadTrackerAsync: newTracker => dispatch(loadTrackerAsync(newTracker)),
+    getDayListAsync: id => dispatch(getDayListAsync(id)),
     loadDayListAsync: newDayList => dispatch(loadDayListAsync(newDayList))
 });
 
-export default connect(null, mapDispatchToProps)(HomeSwitcher);
+export default connect(mapStateToProps, mapDispatchToProps)(HomeSwitcher);

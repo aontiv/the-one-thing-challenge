@@ -14,13 +14,12 @@ export const deleteHabit = () => ({
 });
 
 // Async Actions
-export const getHabitAsync = (id, setHabitPresent) => dispatch => {
-    Client.getHabit(id)
+export const getHabitAsync = id => dispatch => {
+    return Client.getHabit(id)
         .then(Client.parseJSON)
         .then(data => {
             if (data.message === undefined) {
                 dispatch(setHabit(data));
-                setHabitPresent(true);
             }
         })
 };

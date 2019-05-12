@@ -131,7 +131,7 @@ const Helpers = () => {
                 complete: false,
                 day: (i + 1),
                 incomplete: false,
-                noteText: ''
+                note_text: ''
             });
         }
 

@@ -15,9 +15,9 @@ export const dayReducer = (state = [], action) => {
         case SET_INCOMPLETE:
             return recombineState(state, { ...day, incomplete: true, complete: false }, index);
         case SET_NOTE_TEXT:
-            return recombineState(state, { ...day, noteText: action.noteText }, index);
+            return recombineState(state, { ...day, note_text: action.noteText }, index);
         case DELETE_NOTE_TEXT:
-            return recombineState(state, { ...day, noteText: "" }, index);
+            return recombineState(state, { ...day, note_text: "" }, index);
         default:
             return state;
     }

@@ -14,6 +14,16 @@ export const deleteDayList = () => ({
 });
 
 // Async Actions
+export const getDayListAsync = id => dispatch => {
+    return Client.getDayList(id)
+        .then(Client.parseJSON)
+        .then(data => {
+            if (data.message === undefined) {
+                dispatch(setDayList(data));
+            }
+        })
+};
+
 export const loadDayListAsync = dayList => dispatch => {
     dispatch(setDayList(dayList.dayList));
 

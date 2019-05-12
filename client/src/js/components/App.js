@@ -1,8 +1,5 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from 'react';
 
-import Banner from "./Banner";
-import Navbar from "./Navbar";
-import TrackerSwitcher from "./TrackerSwitcher";
 import AuthorizationView from './AuthorizationView';
 
 import HomeView from './HomeView';
@@ -25,19 +22,9 @@ class App extends Component {
         return (
             <div className="container">
                 {
-                    loggedIn ? (
-                        <HomeView logout={this.logout} />
-                        // <Fragment>
-                        //     <Navbar
-                        //         username={this.props.username}
-                        //         logout={this.logout}    
-                        //     />
-                        //     <Banner />
-                        //     <TrackerSwitcher
-                        //         userId={this.state.userId}
-                        //     />
-                        // </Fragment>
-                    ) : <AuthorizationView login={this.login} />
+                    loggedIn
+                    ? (<HomeView logout={this.logout} />)
+                    : (<AuthorizationView login={this.login} />)
                 }
             </div>
         );

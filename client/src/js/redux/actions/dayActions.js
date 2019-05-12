@@ -16,15 +16,15 @@ export const setIncomplete = day => ({
     day
 });
 
-export const setNoteText = (id, noteText) => ({
+export const setNoteText = (day, noteText) => ({
     type: SET_NOTE_TEXT,
-    id,
+    day,
     noteText
 });
 
-export const deleteNoteText = id => ({
+export const deleteNoteText = day => ({
     type: DELETE_NOTE_TEXT,
-    id
+    day
 });
 
 // Async Actions
@@ -37,3 +37,13 @@ export const setIncompleteAsync = (userId, day) => dispatch => {
     dispatch(setIncomplete(day));
     return Client.updateIncomplete(userId, day);
 };
+
+export const setNoteTextAsync = (userId, day, noteText) => dispatch => {
+    dispatch(setNoteText(day, noteText));
+    return Client.updateNoteText(userId, day, noteText);
+};
+
+export const deleteNoteTextAsync = (userId, day) => dispatch => {
+    dispatch(deleteNoteText(day));
+    return Client.deleteNoteText(userId, day);
+}

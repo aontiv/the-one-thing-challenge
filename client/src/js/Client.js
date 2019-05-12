@@ -19,8 +19,12 @@ const Client = () => {
         return fetch(`/get_habit/${id}`);
     };
 
-    const getTracker = userId => {
-        return fetch(`/get_tracker/${userId}`);
+    const getTracker = id => {
+        return fetch(`/get_tracker/${id}`);
+    };
+
+    const getDayList = id => {
+        return fetch(`/get_day_list/${id}`);
     };
 
     const addHabit = habit => {
@@ -65,16 +69,16 @@ const Client = () => {
         });
     };
 
-    const updateNote = (trackerId, dayNumber, noteText) => {
-        return fetch(`/update_note/${trackerId}/${dayNumber}`, {
+    const updateNoteText = (userId, dayNumber, noteText) => {
+        return fetch(`/update_note_text/${userId}/${dayNumber}`, {
             method: "UPDATE",
             headers: { "Content-Type": "text/plain" },
             body: noteText
         });
     };
 
-    const deleteNote = (trackerId, dayNumber) => {
-        return fetch(`/delete_note/${trackerId}/${dayNumber}`, {
+    const deleteNoteText = (userId, dayNumber) => {
+        return fetch(`/delete_note_text/${userId}/${dayNumber}`, {
             method: "DELETE"
         });
     };
@@ -113,15 +117,16 @@ const Client = () => {
         addTracker,
         deleteDayList,
         deleteHabit,
-        deleteNote,
+        deleteNoteText,
         deleteTracker,
+        getDayList,
         getHabit,
         getTracker,
         handleResponse,
         login,
         parseJSON,
         register,
-        updateNote,
+        updateNoteText,
         updateComplete,
         updateIncomplete
     };

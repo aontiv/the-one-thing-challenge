@@ -8,7 +8,7 @@ const Navbar = props => (
                 className='text-white logout'
                 onClick={event => {
                     props.logout(event);
-                    props.deleteUser();    
+                    props.resetState();    
                 }}
             >
                 Logout

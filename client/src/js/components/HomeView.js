@@ -6,10 +6,16 @@ import Banner from './Banner';
 import HomeSwitcher from './HomeSwitcher';
 
 import { deleteUser } from '../redux/actions/userActions';
+import { deleteHabit } from '../redux/actions/habitActions';
+import { deleteTracker } from '../redux/actions/trackerActions';
+import { deleteDayList } from '../redux/actions/dayListActions';
 
 class HomeView extends Component {
-    deleteUser = () => {
+    resetState = () => {
         this.props.deleteUser();
+        this.props.deleteHabit();
+        this.props.deleteTracker();
+        this.props.deleteDayList();
     };
 
     render() {
@@ -17,7 +23,7 @@ class HomeView extends Component {
             <Fragment>
                 <Navbar
                     logout={this.props.logout}
-                    deleteUser={this.deleteUser}
+                    resetState={this.resetState}
                     username={this.props.username}
                 />
                 <Banner />
@@ -33,7 +39,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    deleteUser: () => dispatch(deleteUser())
+    deleteUser: () => dispatch(deleteUser()),
+    deleteHabit: () => dispatch(deleteHabit()),
+    deleteTracker: () => dispatch(deleteTracker()),
+    deleteDayList: () => dispatch(deleteDayList())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeView);

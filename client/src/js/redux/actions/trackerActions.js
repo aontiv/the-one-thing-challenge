@@ -14,6 +14,16 @@ export const deleteTracker = () => ({
 });
 
 // Async Actions
+export const getTrackerAsync = id => dispatch => {
+    return Client.getTracker(id)
+        .then(Client.parseJSON)
+        .then(data => {
+            if (data.message === undefined) {
+                dispatch(setTracker(data));
+            }
+        });
+};
+
 export const loadTrackerAsync = tracker => dispatch => {
     dispatch(setTracker(tracker));
 
