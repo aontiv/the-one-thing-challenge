@@ -9,28 +9,31 @@ def root():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    rq_data = request.get_json()
-    db_file = open("./db/database.json", "r")
-    db_data = json.load(db_file)
+    if request.method == "POST":
+        rq_data = request.get_json()
+        db_file = open("./db/database.json", "r")
+        db_data = json.load(db_file)
 
-    user_match = False
-    for user in db_data["users"]:
-        if user["username"] == rq_data["username"]:
-            user_match = user
+        user_match = False
+        for user in db_data["users"]:
+            if user["username"] == rq_data["username"]:
+                user_match = user
 
-    password_match = False    
-    if user_match != False:
-        if user_match["password"] == rq_data["password"]:
-            password_match = True
+        password_match = False    
+        if user_match != False:
+            if user_match["password"] == rq_data["password"]:
+                password_match = True
 
-    db_file.close()
+        db_file.close()
 
-    if user_match == False:
-        return make_response((json.dumps({ "message": "Username not found" }), 400, { "Content-Type": "application/json" }))
-    elif user_match != False and password_match == False:
-        return make_response((json.dumps({ "message": "Password is incorrect" }), 400, { "Content-Type": "application/json" }))
+        if user_match == False:
+            return make_response((json.dumps({ "message": "Username not found" }), 400, { "Content-Type": "application/json" }))
+        elif user_match != False and password_match == False:
+            return make_response((json.dumps({ "message": "Password is incorrect" }), 400, { "Content-Type": "application/json" }))
+        else:
+            return jsonify({ "_id": user_match["_id"], "username": user_match["username"] })
     else:
-        return jsonify({ "_id": user_match["_id"], "username": user_match["username"] })
+        return render_template("index.html")
 
 @app.route("/register", methods=["POST"])
 def register():

@@ -46,4 +46,4 @@ export const setNoteTextAsync = (userId, day, noteText) => dispatch => {
 export const deleteNoteTextAsync = (userId, day) => dispatch => {
     dispatch(deleteNoteText(day));
     return Client.deleteNoteText(userId, day);
-}
+};

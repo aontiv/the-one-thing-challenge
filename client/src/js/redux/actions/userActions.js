@@ -4,7 +4,6 @@ import {
 } from '../constants';
 import Client from '../../Client';
 
-// 'user' shape: { id, username }
 export const setUser = user => ({
     type: SET_USER,
     user

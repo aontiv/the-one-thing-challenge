@@ -18,7 +18,7 @@ class StartDate extends Component {
                     ...this.props.fields,
                     [name]: name === 'month' ? (value + 1) : value
                 });
-        
+
         this.props.handleFieldChange(fields);
     };
 
@@ -63,12 +63,12 @@ class StartDate extends Component {
                 </option>
             )
         });
-        return yearList; 
+        return yearList;
     }
 
     render() {
         const { day, month, year } = this.props.fields;
-        
+
         return (
             <Fragment>
                 <StartDateSelect

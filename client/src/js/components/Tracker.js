@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import React, { Component, Fragment } from 'react';
 
 import HabitInformation from './HabitInformation';
-import CountdownSwitcher from './CountdownSwitcher';
+import TrackerSwitcher from './TrackerSwitcher';
 
 import { resetHabitAsync } from '../redux/actions/habitActions';
 import { resetTrackerAsync } from '../redux/actions/trackerActions';
@@ -37,7 +37,7 @@ class Tracker extends Component {
                     description={this.props.description}
                     onClick={this.handleResetClick}
                 />
-                <CountdownSwitcher
+                <TrackerSwitcher
                     date={date}
                 />
             </Fragment>

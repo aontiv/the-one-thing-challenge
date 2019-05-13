@@ -29,7 +29,7 @@ class HabitSetup extends Component {
         const   { day, month, year } = this.state.fields,
                 habit = { category: this.state.category, description: this.state.description },
                 date = moment(`${month}-${day}-${year}`);
-                
+
         this.props.initHabitTrackerDayList(habit, date);
     };
 

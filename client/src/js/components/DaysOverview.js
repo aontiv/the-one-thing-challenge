@@ -41,19 +41,19 @@ const DaysOverview = props => {
         <div className="mb-5">
             <ul className='list-group list-group-horizontal'>
                 { dayList.slice(0, 11) }
-            </ul> 
+            </ul>
             <ul className='list-group list-group-horizontal'>
                 { dayList.slice(11, 22) }
-            </ul> 
+            </ul>
             <ul className='list-group list-group-horizontal'>
                 { dayList.slice(22, 33) }
-            </ul> 
+            </ul>
             <ul className='list-group list-group-horizontal'>
                 { dayList.slice(33, 44) }
-            </ul> 
+            </ul>
             <ul className='list-group list-group-horizontal'>
                 { dayList.slice(44, 55) }
-            </ul> 
+            </ul>
             <ul className='list-group list-group-horizontal'>
                 { dayList.slice(55, 66) }
             </ul>

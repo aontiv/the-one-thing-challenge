@@ -2,7 +2,7 @@ import React from 'react';
 
 const NoteInput = props => {
     const disabled = props.noteText === '';
-    
+
     return (
         <form
             className='input-group mb-5'

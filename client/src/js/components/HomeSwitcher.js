@@ -31,7 +31,7 @@ class HomeSwitcher extends Component {
         const   newHabit = Helpers.constructHabit(habit, this.props.userId),
                 newTracker = Helpers.constructTracker(date, this.props.userId),
                 newDayList = Helpers.constructDayList(this.props.userId);
-        
+
         this.props.loadHabitAsync(newHabit)
             .then(() => this.props.loadTrackerAsync(newTracker))
             .then(() => {

@@ -23,7 +23,7 @@ class AuthorizationSwitcher extends Component {
     inputsValid = () => {
         const   usernameValid = this.usernameInput.current.checkValidity(),
                 passwordValid = this.passwordInput.current.checkValidity();
-        
+
         return usernameValid && passwordValid;
     };
 

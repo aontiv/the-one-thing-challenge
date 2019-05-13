@@ -6,7 +6,423 @@
       "password": "testpassword"
     }
   ],
-  "habits": [],
-  "trackers": [],
-  "day_lists": []
+  "habits": [
+    {
+      "_id": "6f65c989-0605-4d14-ad02-a375a3377ecd",
+      "user_id": "97f1ca2f-6027-4d31-8d35-b19772e16ebb",
+      "category": "Physical Health",
+      "description": "Lose 10 lbs!!"
+    }
+  ],
+  "trackers": [
+    {
+      "complete": false,
+      "date": "2019-05-12T07:00:00.000Z",
+      "_id": "3d185967-cefd-4906-9917-8f3afd1ed8db",
+      "user_id": "97f1ca2f-6027-4d31-8d35-b19772e16ebb"
+    }
+  ],
+  "day_lists": [
+    {
+      "user_id": "97f1ca2f-6027-4d31-8d35-b19772e16ebb",
+      "day_list": [
+        {
+          "day": 1,
+          "complete": true,
+          "incomplete": false,
+          "note_text": "Lost 1 lbs. today!"
+        },
+        {
+          "day": 2,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 3,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 4,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 5,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 6,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 7,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 8,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 9,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 10,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 11,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 12,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 13,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 14,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 15,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 16,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 17,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 18,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 19,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 20,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 21,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 22,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 23,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 24,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 25,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 26,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 27,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 28,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 29,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 30,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 31,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 32,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 33,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 34,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 35,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 36,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 37,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 38,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 39,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 40,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 41,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 42,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 43,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 44,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 45,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 46,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 47,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 48,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 49,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 50,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 51,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 52,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 53,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 54,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 55,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 56,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 57,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 58,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 59,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 60,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 61,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 62,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 63,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 64,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 65,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        },
+        {
+          "day": 66,
+          "complete": false,
+          "incomplete": false,
+          "note_text": ""
+        }
+      ]
+    }
+  ]
 }

@@ -10,10 +10,10 @@ const Helpers = () => {
             return generateMonthList(moment().month())
         }
         else {
-            return generateMonthList();  
+            return generateMonthList();
         }
     };
-  
+
   // Returns an two-dimensional array whose first index is the month index,
   // and whose second index is either true or false indicating whether or not
   // that particular month should be visually displayed as "disabled"
@@ -44,7 +44,7 @@ const Helpers = () => {
             return generateDayList(date);
         }
     };
-  
+
     // Returns a two-dimensional array whose first index is the day index,
     // and whose second index is either true or false indicating whether or not
     // that particular day should be visually displayed as "disabled"
@@ -86,11 +86,11 @@ const Helpers = () => {
         let dateObject = moment(`${date.month}-${date.day}-${date.year}`, 'M-D-YYYY'),
             isValidDate = dateObject.isValid(),
             isBefore = moment(dateObject, 'days').isBefore(moment());
-        
+
         if (!isValidDate) {
             const daysInMonth = moment(`${date.month}-${date.year}`, 'M-YYYY').daysInMonth();
             isBefore = moment(`${date.month}-${daysInMonth}-${date.year}`, 'M-D-YYYY', 'days').isBefore(moment());
-            
+
             return isBefore
                 ? { month: moment().month() + 1, day: moment().date(), year: moment().year() }
                 : { ...date, day: daysInMonth };

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Route, Redirect } from 'react-router-dom';
 
 import AuthorizationView from './AuthorizationView';
 
@@ -21,11 +22,16 @@ class App extends Component {
 
         return (
             <div className="container">
-                {
-                    loggedIn
-                    ? (<HomeView logout={this.logout} />)
-                    : (<AuthorizationView login={this.login} />)
-                }
+                <Route path="/" exact={true} render={() => {
+                    return loggedIn
+                        ? <HomeView logout={this.logout} />
+                        : <Redirect to="/login" />
+                }} />
+                <Route path="/login" render={() => {
+                    return loggedIn
+                        ? <Redirect to="/" />
+                        : <AuthorizationView login={this.login} />
+                }} />
             </div>
         );
     }
