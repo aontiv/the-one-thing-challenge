@@ -14,8 +14,8 @@ export const deleteDayList = () => ({
 });
 
 // Async Actions
-export const getDayListAsync = id => dispatch => {
-    return Client.getDayList(id)
+export const getDayListAsync = userId => dispatch => {
+    return Client.getDayList(userId)
         .then(Client.parseJSON)
         .then(data => {
             if (data.message === undefined) {

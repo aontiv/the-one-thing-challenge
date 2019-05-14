@@ -15,16 +15,16 @@ const Client = () => {
         });
     };
 
-    const getHabit = id => {
-        return fetch(`/get_habit/${id}`);
+    const getHabit = userId => {
+        return fetch(`/get_habit/${userId}`);
     };
 
-    const getTracker = id => {
-        return fetch(`/get_tracker/${id}`);
+    const getTracker = userId => {
+        return fetch(`/get_tracker/${userId}`);
     };
 
-    const getDayList = id => {
-        return fetch(`/get_day_list/${id}`);
+    const getDayList = userId => {
+        return fetch(`/get_day_list/${userId}`);
     };
 
     const addHabit = habit => {

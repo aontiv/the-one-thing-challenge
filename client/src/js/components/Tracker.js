@@ -22,7 +22,6 @@ class Tracker extends Component {
             .then(() => resetTrackerAsync(userId))
             .then(() => {
                 resetDayListAsync(userId);
-                this.props.setReady(false);
             });
     };
 

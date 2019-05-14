@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import HabitSetup from './HabitSetup';
 import HomeSwitcherMarkup from './HomeSwitcherMarkup';
 import Motivation from './Motivation';
+import Spinner from './Spinner';
 import Tracker from './Tracker';
 
 import Helpers from '../Helpers';
@@ -43,22 +44,24 @@ class HomeSwitcher extends Component {
     render() {
         const ready = this.state.ready;
 
-        return ready && this.props.habitId
-            ? (
-                <HomeSwitcherMarkup>
-                    <Tracker
-                        setReady={this.setReady}
-                    />
-                </HomeSwitcherMarkup>
-            )
-            : (
-                <HomeSwitcherMarkup>
-                    <HabitSetup
-                        initHabitTrackerDayList={this.initHabitTrackerDayList}
-                    />
-                    <Motivation />
-                </HomeSwitcherMarkup>
-            );
+        return ready
+            ? this.props.habitId
+                ? (
+                    <HomeSwitcherMarkup>
+                        <Tracker
+                            setReady={this.setReady}
+                        />
+                    </HomeSwitcherMarkup>
+                )
+                : (
+                    <HomeSwitcherMarkup>
+                        <HabitSetup
+                            initHabitTrackerDayList={this.initHabitTrackerDayList}
+                        />
+                        <Motivation />
+                    </HomeSwitcherMarkup>
+                )
+            : <Spinner />
     }
 }
 
@@ -67,11 +70,11 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    getHabitAsync: (id, setHabitPresent) => dispatch(getHabitAsync(id, setHabitPresent)),
+    getHabitAsync: (userId, setHabitPresent) => dispatch(getHabitAsync(userId, setHabitPresent)),
     loadHabitAsync: newHabit => dispatch(loadHabitAsync(newHabit)),
-    getTrackerAsync: id => dispatch(getTrackerAsync(id)),
+    getTrackerAsync: userId => dispatch(getTrackerAsync(userId)),
     loadTrackerAsync: newTracker => dispatch(loadTrackerAsync(newTracker)),
-    getDayListAsync: id => dispatch(getDayListAsync(id)),
+    getDayListAsync: userId => dispatch(getDayListAsync(userId)),
     loadDayListAsync: newDayList => dispatch(loadDayListAsync(newDayList))
 });
 

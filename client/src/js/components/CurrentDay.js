@@ -8,8 +8,12 @@ const headerStyles = current => classNames(
 
 const CurrentDay = props => (
     <div className='mb-2 d-flex justify-content-center'>
-        <a href='' className={headerStyles(props.current)}>
-            <h2 onClick={event => props.onClick( event,(props.current))}>
+        <a
+            href=''
+            className={headerStyles(props.current)}
+            onClick={event => props.onClick( event, props.current)}
+        >
+            <h2>
                 {props.current >= 66 ? 'Challenge Complete' : (props.current)}
             </h2>
         </a>

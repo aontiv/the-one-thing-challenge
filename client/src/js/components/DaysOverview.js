@@ -19,7 +19,7 @@ const badgeStyles = day => classNames(
     { 'badge-danger': day.incomplete },
     { 'badge-success': day.complete },
     { 'badge-primary': !day.complete && !day.incomplete },
-    { 'text-warning': day.noteText }
+    { 'text-warning': day.note_text }
 );
 
 const DaysOverview = props => {

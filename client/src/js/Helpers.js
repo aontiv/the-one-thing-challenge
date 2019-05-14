@@ -117,7 +117,6 @@ const Helpers = () => {
     });
 
     const constructTracker = (date, id) => ({
-        complete: false,
         date,
         _id: uuid.v4(),
         userId: id

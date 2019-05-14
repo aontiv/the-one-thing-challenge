@@ -14,8 +14,8 @@ export const deleteHabit = () => ({
 });
 
 // Async Actions
-export const getHabitAsync = id => dispatch => {
-    return Client.getHabit(id)
+export const getHabitAsync = userId => dispatch => {
+    return Client.getHabit(userId)
         .then(Client.parseJSON)
         .then(data => {
             if (data.message === undefined) {

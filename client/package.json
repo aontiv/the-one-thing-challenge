@@ -4,7 +4,7 @@
   "description": "",
   "private": true,
   "scripts": {
-    "start": "concurrently \"npm run build:watch\" \"cd ../server && pipenv run python server.py\"",
+    "start": "concurrently \"npm run build:watch\" \"cd ../server && pipenv run python application.py\"",
     "build:dev": "webpack --color --mode=development",
     "build:prod": "webpack --color --mode=production",
     "build:watch": "webpack --color --watch --mode=development"
