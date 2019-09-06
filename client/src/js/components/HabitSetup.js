@@ -14,9 +14,15 @@ class HabitSetup extends Component {
         }
     };
 
+    formatField(field) {
+        return field < 10 ? `0${field}` : field;
+    }
+
     handleFieldChange = fields => {
+        fields.day = this.formatField(fields.day);
+        fields.month = this.formatField(fields.month);
         this.setState({ fields });
-    };
+    }
 
     handleHabitChange = event => {
         const name = event.target.name;
@@ -28,8 +34,8 @@ class HabitSetup extends Component {
         event.preventDefault();
         const   { day, month, year } = this.state.fields,
                 habit = { category: this.state.category, description: this.state.description },
-                date = moment(`${month}-${day}-${year}`);
-
+                date = moment(`${year}-${month}-${day}`);
+               
         this.props.initHabitTrackerDayList(habit, date);
     };
 

@@ -26,7 +26,7 @@ class Tracker extends Component {
     };
 
     render() {
-        const date = moment(this.props.date).format('MMMM DD, YYYY');
+        const date = moment(this.props.date).format('YYYY-MM-DD');
 
         return (
             <Fragment>
