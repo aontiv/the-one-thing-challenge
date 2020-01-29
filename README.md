@@ -4,6 +4,11 @@
 
 Visit @ [The One Thing Challenge](http://the-one-thing-challenge.54.218.142.71.xip.io)
 
+## Test Login:
+
+username: testuser
+password: testpassword
+
 ## Summary:
 
 The One Thing Challenge app is a simple habit tracker application. The idea came directly from a book co-authored by Gary Keller titled: The One Thing.
